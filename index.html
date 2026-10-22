@@ -119,54 +119,56 @@ header.nav.stuck .brandmark{width:150px;height:75px}
 .scrollcue::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:wheel 1.6s infinite}
 @keyframes wheel{to{transform:translateY(14px);opacity:0}}
 
-/* trust marquee */
-.trust{background:var(--white);border-bottom:1px solid #E1E4EA;overflow:hidden}
-.trust .track{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 48px;padding:20px var(--gutter)}
-.trust span{font-family:var(--font-d);text-transform:uppercase;font-weight:700;font-size:20px;letter-spacing:.04em;color:#3B475C;display:inline-flex;align-items:center;gap:48px}
-.trust span::after{content:"";width:8px;height:8px;background:var(--red);transform:rotate(45deg)}
+/* trust icons */
+.trustsec{background:#fff;border-bottom:1px solid #E1E4EA;padding-block:56px}
+.trgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #E1E4EA;border-radius:18px;overflow:hidden;background:#fff}
+.tr{position:relative;padding:28px 26px 30px;border-right:1px solid #E1E4EA;border-bottom:1px solid #E1E4EA;transition:background .35s}
+.tr:nth-child(4n){border-right:0}.tr:nth-last-child(-n+4){border-bottom:0}
+.tr:hover{background:var(--tn)}
+.tr .ic{display:grid;place-items:center;width:58px;height:58px;border-radius:16px;background:var(--tn);color:var(--k);margin-bottom:16px;transition:transform .5s var(--ease),background .3s,color .3s}
+.tr .ic svg{width:28px;height:28px}
+.tr:hover .ic{transform:translateY(-4px) rotate(-6deg);background:var(--k);color:#fff}
+.tr h3{font-size:26px;font-weight:800;line-height:1}
+.tr p{color:var(--muted);font-size:14.5px;margin-top:8px;line-height:1.4}
+@media (max-width:1040px){.trgrid{grid-template-columns:repeat(2,1fr)}.tr:nth-child(4n){border-right:1px solid #E1E4EA}.tr:nth-child(2n){border-right:0}.tr:nth-last-child(-n+4){border-bottom:1px solid #E1E4EA}.tr:nth-last-child(-n+2){border-bottom:0}}
+@media (max-width:480px){.tr{padding:20px 16px}.tr h3{font-size:22px}.tr .ic{width:48px;height:48px}}
 
-/* categories bento */
+/* categories accordion */
 .bento-sec{position:relative;overflow:hidden}
 .bento-sec::before{content:"";position:absolute;width:720px;height:720px;right:-240px;top:-240px;border-radius:50%;background:radial-gradient(circle,rgba(224,39,45,.22),transparent 65%);pointer-events:none}
-.bento{position:relative;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(250px,auto);gap:16px}
-.bt{position:relative;display:flex;flex-direction:column;gap:14px;padding:14px 14px 20px;border-radius:18px;background:linear-gradient(150deg,#1D2B45,#131D30);border:1px solid var(--line);color:#fff;text-decoration:none;overflow:hidden;transition:transform .5s var(--ease),border-color .3s,box-shadow .5s}
-.bt{--acc:var(--red);--tint:#fff}
-.bt:hover{transform:translateY(-8px);border-color:var(--acc);box-shadow:0 30px 60px rgba(0,0,0,.45),0 0 0 1px var(--acc)}
-.bt::selection{background:var(--acc)}
-.bt .pic{position:relative;flex:1;min-height:150px;border-radius:12px;background:radial-gradient(circle at 50% 45%,#fff 0,var(--tint) 78%);overflow:hidden}
-.bt .pic img{mix-blend-mode:multiply;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:14px;transition:transform .8s var(--ease)}
-.bt:hover .pic img{transform:scale(1.1) rotate(-1.5deg)}
-.bt .num{position:absolute;left:12px;top:10px;z-index:2;font:800 54px/1 var(--font-d);color:transparent;-webkit-text-stroke:1.5px #C9CFD9;opacity:.9;transition:all .3s}
-.bt:hover .num{-webkit-text-stroke-color:var(--acc)}
-.bt .num{-webkit-text-stroke-color:var(--acc)}
-.bt .chip{position:absolute;right:12px;top:12px;z-index:2;background:var(--acc);color:#fff;font:500 11px var(--font-m);letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
-.bt .meta{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:0 6px}
-.bt h3{font-size:clamp(28px,2.6vw,36px);font-weight:800;position:relative;padding-bottom:8px}
-.bt h3::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:34px;background:var(--acc);transition:width .5s var(--ease)}
-.bt:hover h3::after{width:100%}
-.bt small{display:block;color:#9AA6BA;font-size:14px;line-height:1.35;margin-top:6px}
-.bt .go{flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid #4A5873;display:grid;place-items:center;transition:all .35s var(--ease)}
-.bt:hover .go{background:var(--acc);border-color:var(--acc);transform:rotate(-45deg)}
-.bt .go svg{width:16px;height:16px}
-.bt.big{grid-column:span 2;grid-row:span 2;background:#0A0F18}
-.bt.big::before{content:"";position:absolute;inset:0;background:url(assets/img/gym-rack-blue.jpg) center/cover;opacity:.55;transition:transform 1.2s var(--ease),opacity .4s}
-.bt.big:hover::before{transform:scale(1.06);opacity:.7}
-.bt.big::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,24,.15),rgba(10,15,24,.92) 80%)}
-.bt.big>*{position:relative;z-index:2}
-.bt.big .pic{margin:6px;box-shadow:0 24px 50px rgba(0,0,0,.45)}
-.bt.big h3{font-size:clamp(44px,5vw,72px)}
-.bt.wide{grid-column:span 2;flex-direction:row;align-items:stretch;grid-auto-rows:auto}
-.bt.wide .pic{flex:0 0 42%;min-height:0}
-.bt.wide .meta{flex:1;flex-direction:column;align-items:flex-start;justify-content:center;gap:16px}
-.bt.cta{grid-column:span 2;background:linear-gradient(120deg,#E0272D,#7B4DFF);border-color:transparent;justify-content:center;padding:34px}
-.bt.cta h3{font-size:clamp(34px,4vw,52px)}
-.bt.cta h3::after{background:#fff}
-.bt.cta small{color:#FFE3E4;font-size:16px;max-width:36ch}
-.bt.cta .go{border-color:#fff}.bt.cta:hover .go{background:#fff;color:var(--red)}
-.bt.cta:hover{border-color:#fff;box-shadow:0 30px 60px rgba(0,0,0,.45)}
-@media (max-width:1040px){.bento{grid-template-columns:repeat(2,1fr)}.bt.big{grid-row:span 1;min-height:460px}}
-@media (max-width:760px){.bento{grid-template-columns:1fr}.bt.big,.bt.wide,.bt.cta{grid-column:auto}.bt.wide{flex-direction:column}.bt.wide .pic{flex:1;min-height:170px}.bt .num{font-size:44px}}
-
+.acc{position:relative;display:flex;gap:12px;height:560px}
+.pn{position:relative;flex:1;min-width:0;border-radius:20px;overflow:hidden;text-decoration:none;color:var(--ink);background:linear-gradient(165deg,var(--tint),color-mix(in srgb,var(--acc) 38%,var(--tint)));transition:flex .7s var(--ease),box-shadow .5s;box-shadow:0 0 0 1px rgba(255,255,255,.06)}
+.pn.on{flex:4.2;box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 0 2px var(--acc)}
+.pn .pic{position:absolute;left:0;right:0;top:0;bottom:170px}
+.pn .pic img{mix-blend-mode:multiply;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px 10px;transition:transform .9s var(--ease)}
+.pn.on .pic img{transform:scale(1.12)}
+.pn .vt{position:absolute;left:0;right:0;bottom:0;height:170px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px;transition:opacity .35s}
+.pn .vt span{writing-mode:vertical-rl;transform:rotate(180deg);font:800 28px var(--font-d);text-transform:uppercase;letter-spacing:.03em;white-space:nowrap}
+.pn .vt::before{display:none}
+.pn.on .vt{opacity:0}
+.pn .ex{position:absolute;left:0;right:0;bottom:0;padding:22px 26px 26px;opacity:0;transform:translateY(20px);transition:opacity .4s,transform .6s var(--ease);pointer-events:none;background:linear-gradient(180deg,transparent,rgba(255,255,255,.55) 40%)}
+.pn.on .ex{opacity:1;transform:none;transition-delay:.25s;pointer-events:auto}
+.pn .chip{display:inline-block;background:var(--acc);color:#fff;font:500 11px var(--font-m);letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin-bottom:10px}
+.pn h3{font-size:clamp(36px,3.6vw,52px);font-weight:800}
+.pn p{color:#2B3547;margin:8px 0 16px;max-width:36ch;font-size:15.5px}
+.pn .go{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;font-weight:600;font-size:14.5px;padding:12px 20px;border-radius:999px;transition:background .25s}
+.pn:hover .go{background:var(--acc)}
+.pn .go svg{width:15px;height:15px}
+.bar{position:relative;margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:26px 32px;border-radius:20px;background:linear-gradient(120deg,#E0272D,#7B4DFF);color:#fff;text-decoration:none;transition:transform .4s var(--ease)}
+.bar:hover{transform:translateY(-4px)}
+.bar h3{font-size:clamp(28px,3.2vw,42px);font-weight:800}
+.bar p{color:#F2E9FF;margin-top:6px}
+.bar .btn{background:#fff;color:var(--red);white-space:nowrap}
+.bar .btn svg,.pn .go svg{width:15px;height:15px;flex:none}
+@media (max-width:900px){
+  .acc{flex-direction:column;height:auto}
+  .pn{flex:none;height:92px;transition:height .6s var(--ease),box-shadow .4s}
+  .pn.on{flex:none;height:440px}
+  .pn .pic{bottom:150px}
+  .pn:not(.on) .pic{opacity:0}
+  .pn .vt{height:92px;justify-content:flex-start;align-items:center;padding:0 22px}
+  .pn .vt span{writing-mode:horizontal-tb;transform:none;font-size:30px}
+}
 /* shop shelf */
 .shop{background:linear-gradient(180deg,#fff 0,#FBF7FF 45%,#F2F8FF 100%);position:relative}
 .rainbow{height:5px;background:linear-gradient(90deg,var(--c-red),var(--c-amber) 20%,var(--c-green) 40%,var(--c-teal) 60%,var(--c-blue) 80%,var(--c-violet))}
@@ -258,6 +260,12 @@ header.nav.stuck .brandmark{width:150px;height:75px}
 .spot .ph{border-radius:var(--r);overflow:hidden;position:relative;aspect-ratio:4/3;background:#222}
 .spot .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
 .spot .ph:hover img{transform:scale(1.05)}
+.phwrap{position:relative;padding-bottom:36px}
+.phsm{position:absolute;right:-18px;bottom:0;width:36%;aspect-ratio:1;background:#fff;border-radius:16px;box-shadow:0 24px 50px rgba(10,15,24,.3);border:4px solid #fff;overflow:hidden;animation:float 7s ease-in-out infinite}
+.phsm img{width:100%;height:100%;object-fit:contain;padding:8px;transition:transform .8s var(--ease)}
+.phsm:hover img{transform:scale(1.1)}
+.phsm span{position:absolute;left:8px;bottom:8px;background:var(--ink);color:#fff;font:500 10.5px var(--font-m);letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:4px}
+@media (max-width:1040px){.phsm{right:10px}}
 .spot h2{font-size:clamp(38px,5vw,66px);font-weight:800;margin:12px 0 16px}
 .spot p{color:var(--muted);max-width:48ch}
 .spot ul{list-style:none;margin:22px 0 28px;padding:0;display:grid;gap:10px}
@@ -273,14 +281,13 @@ header.nav.stuck .brandmark{width:150px;height:75px}
 .proc figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:20px;display:flex;flex-direction:column;gap:2px}
 .proc figcaption b{font-family:var(--font-d);text-transform:uppercase;font-size:28px;font-weight:700}
 .proc figcaption span{color:#C3CCDB;font-size:14px}
-.proc .n{position:absolute;top:14px;left:16px;z-index:2;font-family:var(--font-m);font-size:12px;letter-spacing:.14em;color:#fff;background:var(--red);padding:4px 8px;border-radius:4px}
 
 /* partners */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:64px}
 .partners h2{font-size:clamp(36px,4.6vw,60px);font-weight:800;margin-top:10px}
 .steps{list-style:none;margin:30px 0 0;padding:0;counter-reset:s;border-left:2px solid #CDD2DB}
-.steps li{counter-increment:s;position:relative;padding:0 0 28px 30px}
-.steps li::before{content:counter(s);position:absolute;left:-14px;top:0;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font:500 12px var(--font-m);display:grid;place-items:center}
+.steps li{position:relative;padding:0 0 28px 30px}
+.steps li::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px var(--paper)}
 .steps h4{font-size:24px;font-weight:700}
 .steps p{color:var(--muted);font-size:15.5px;margin-top:6px;max-width:44ch}
 .ways{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
@@ -378,10 +385,8 @@ footer.site .dots li::before{content:"";width:8px;height:8px;border-radius:50%;b
 footer.site .contact{gap:12px;line-height:1.45}
 footer.site ul a{transition:color .2s,padding-left .25s var(--ease)}
 footer.site ul a:hover{padding-left:6px}
-.mark{font:800 clamp(44px,10.4vw,160px)/.85 var(--font-d);text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px #263349;text-align:center;margin-top:56px;user-select:none;white-space:nowrap;overflow:hidden;background:linear-gradient(180deg,rgba(224,39,45,.35),transparent 75%);-webkit-background-clip:text;background-clip:text}
 @media (max-width:1040px){footer.site .cols{grid-template-columns:1fr 1fr}.fcta{padding:28px}}
-@media (max-width:760px){footer.site .cols{grid-template-columns:1fr}.mark{font-size:11.5vw}.fnews form{max-width:none}}
-
+@media (max-width:760px){footer.site .cols{grid-template-columns:1fr}
 /* quote drawer */
 .scrim{position:fixed;inset:0;background:rgba(10,15,24,.55);opacity:0;pointer-events:none;transition:opacity .35s;z-index:70}
 .scrim.on{opacity:1;pointer-events:auto}
@@ -517,7 +522,20 @@ footer.site ul a:hover{padding-left:6px}
   <span class="scrollcue" aria-hidden="true"></span>
 </section>
 
-<div class="trust"><div class="track"><span>EN 957-1</span><span>ASTM F2276-10</span><span>TÜV tested</span><span>Intertek tested</span><span>Bespoke colour</span><span>OEM &amp; private label</span><span>Made in Qingdao</span><span>20+ years engineering</span></div></div>
+<section class="trustsec" aria-label="Quality and credentials">
+  <div class="wrap">
+    <div class="trgrid">
+      <div class="tr rv" style="--d:0.00s;--k:var(--c-blue);--tn:#DCE8FF"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><h3>EN 957-1</h3><p>European standard for stationary training equipment.</p></div>
+      <div class="tr rv" style="--d:0.06s;--k:var(--c-red);--tn:#FFE1E2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.5"/><path d="M8.7 13.6 7 21l5-3 5 3-1.7-7.4"/></svg></span><h3>ASTM F2276-10</h3><p>US standard specification for fitness equipment.</p></div>
+      <div class="tr rv" style="--d:0.12s;--k:var(--c-violet);--tn:#E6DDFF"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6l-5.2 9.2A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.8L14 9V3"/><path d="M7.5 15h9"/></svg></span><h3>TÜV tested</h3><p>Static and dynamic testing with third-party labs.</p></div>
+      <div class="tr rv" style="--d:0.18s;--k:var(--c-teal);--tn:#D1F4EE"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></svg></span><h3>Intertek tested</h3><p>Independent lab checks before production.</p></div>
+      <div class="tr rv" style="--d:0.24s;--k:var(--c-amber);--tn:#FFE9BF"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/></svg></span><h3>Bespoke colour</h3><p>Your brand shade matched across the range.</p></div>
+      <div class="tr rv" style="--d:0.30s;--k:var(--c-red);--tn:#FFE1E2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12.5V4h8.5L21 13.5 13.5 21z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg></span><h3>OEM &amp; private label</h3><p>Your design or ours, with your name on it.</p></div>
+      <div class="tr rv" style="--d:0.36s;--k:var(--c-green);--tn:#DAF5E1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V10l6 4v-4l6 4V5h3.5V21z"/><path d="M3 21h18M8 17h1M12 17h1M16 17h1"/></svg></span><h3>Made in Qingdao</h3><p>Cutting to coating and assembly, under one roof.</p></div>
+      <div class="tr rv" style="--d:0.42s;--k:var(--c-blue);--tn:#DCE8FF"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><h3>20+ years engineering</h3><p>Two decades of product engineering experience.</p></div>
+    </div>
+  </div>
+</section>
 
 <!-- CATEGORIES -->
 <section class="sec dark bento-sec" id="products">
@@ -526,15 +544,17 @@ footer.site ul a:hover{padding-left:6px}
       <div><span class="eyebrow">Shop by category</span><h2>Find your <span style="color:var(--red)">equipment</span></h2></div>
       <p>Six families built in one factory. Pick a category to see the full range, or ask us for something bespoke.</p>
     </div>
-    <div class="bento">
-      <a class="bt big rv" style="--d:0.00s;--acc:#E0272D;--tint:#FFE1E2" href="https://salmonfitness.com/product-category/racks/"><div class="pic"><span class="num">01</span><span class="chip">29 models</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Green_M24.jpg" alt="Racks &amp; Rigs" loading="lazy" width="600" height="600"></div><div class="meta"><div><h3>Racks &amp; Rigs</h3><small>Power racks, half racks, single racks and free standing rigs</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="bt  rv" style="--d:0.08s;--acc:#2F6BFF;--tint:#DCE8FF" href="https://salmonfitness.com/product-category/benches/"><div class="pic"><span class="num">02</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Commercial-FID-Bench.jpg" alt="Benches" loading="lazy" width="600" height="600"></div><div class="meta"><div><h3>Benches</h3><small>FID, flat, hip thruster and hyper extension</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="bt  rv" style="--d:0.16s;--acc:#F59E0B;--tint:#FFE9BF" href="https://salmonfitness.com/product-category/bars-plates/"><div class="pic"><span class="num">03</span><span class="chip">44 products</span><img src="https://salmonfitness.com/wp-content/uploads/2023/09/Calibrated-Steel-Plate.jpg" alt="Bars &amp; Plates" loading="lazy" width="600" height="600"></div><div class="meta"><div><h3>Bars &amp; Plates</h3><small>Cross training bars, plates, kettlebells</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="bt  rv" style="--d:0.24s;--acc:#16A34A;--tint:#DAF5E1" href="https://salmonfitness.com/product-category/storage-solutions/"><div class="pic"><span class="num">04</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/2-Tier-dumbbell-rack-10-pair.jpg" alt="Storage" loading="lazy" width="600" height="600"></div><div class="meta"><div><h3>Storage</h3><small>Dumbbell racks, plate trees, barbell racks</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="bt  rv" style="--d:0.32s;--acc:#7B4DFF;--tint:#E6DDFF" href="https://salmonfitness.com/product-category/speciality/"><div class="pic"><span class="num">05</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/GHD.jpg" alt="Speciality" loading="lazy" width="600" height="600"></div><div class="meta"><div><h3>Speciality</h3><small>GHD, reverse hyper, dip stand</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="bt wide rv" style="--d:0.40s;--acc:#0E9F92;--tint:#D1F4EE" href="https://salmonfitness.com/product-category/conditioning/"><div class="pic"><span class="num">06</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Gymnastics-Ring.jpg" alt="Conditioning" loading="lazy" width="600" height="600"></div><div class="meta"><div><h3>Conditioning</h3><small>Rings, resistance bands and tubes, wall balls</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="bt cta rv" style="--d:.5s;--acc:#fff" href="#meet"><div class="meta"><div><span class="eyebrow" style="color:#fff">Bespoke &amp; OEM</span><h3 style="margin-top:10px">Need something made for you?</h3><small>Your design or ours, your colour and your name. Tell us the brief.</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+    <div class="acc" id="acc">
+      <a class="pn on" style="--acc:#E0272D;--tint:#FFE1E2" href="https://salmonfitness.com/product-category/racks/"><div class="pic"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Green_M24.jpg" alt="Racks &amp; Rigs" loading="lazy" width="600" height="600"></div><div class="vt"><span>Racks &amp; Rigs</span></div><div class="ex"><span class="chip">29 models</span><h3>Racks &amp; Rigs</h3><p>Power racks, half racks, single racks and free standing rigs</p><span class="go">Shop Racks &amp; Rigs <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="pn" style="--acc:#2F6BFF;--tint:#DCE8FF" href="https://salmonfitness.com/product-category/benches/"><div class="pic"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Commercial-FID-Bench.jpg" alt="Benches" loading="lazy" width="600" height="600"></div><div class="vt"><span>Benches</span></div><div class="ex"><h3>Benches</h3><p>FID, flat, hip thruster and hyper extension</p><span class="go">Shop Benches <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="pn" style="--acc:#F59E0B;--tint:#FFE9BF" href="https://salmonfitness.com/product-category/bars-plates/"><div class="pic"><img src="https://salmonfitness.com/wp-content/uploads/2023/09/Calibrated-Steel-Plate.jpg" alt="Bars &amp; Plates" loading="lazy" width="600" height="600"></div><div class="vt"><span>Bars &amp; Plates</span></div><div class="ex"><span class="chip">44 products</span><h3>Bars &amp; Plates</h3><p>Cross training bars, plates, kettlebells</p><span class="go">Shop Bars &amp; Plates <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="pn" style="--acc:#16A34A;--tint:#DAF5E1" href="https://salmonfitness.com/product-category/storage-solutions/"><div class="pic"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/2-Tier-dumbbell-rack-10-pair.jpg" alt="Storage" loading="lazy" width="600" height="600"></div><div class="vt"><span>Storage</span></div><div class="ex"><h3>Storage</h3><p>Dumbbell racks, plate trees, barbell racks</p><span class="go">Shop Storage <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="pn" style="--acc:#7B4DFF;--tint:#E6DDFF" href="https://salmonfitness.com/product-category/speciality/"><div class="pic"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/GHD.jpg" alt="Speciality" loading="lazy" width="600" height="600"></div><div class="vt"><span>Speciality</span></div><div class="ex"><h3>Speciality</h3><p>GHD, reverse hyper, dip stand</p><span class="go">Shop Speciality <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="pn" style="--acc:#0E9F92;--tint:#D1F4EE" href="https://salmonfitness.com/product-category/conditioning/"><div class="pic"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Gymnastics-Ring.jpg" alt="Conditioning" loading="lazy" width="600" height="600"></div><div class="vt"><span>Conditioning</span></div><div class="ex"><h3>Conditioning</h3><p>Rings, resistance bands and tubes, wall balls</p><span class="go">Shop Conditioning <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
 
+    </div>
+    <a class="bar rv" href="#meet"><div><h3>Need something made for you?</h3><p>Your design or ours, your colour and your name. Tell us the brief.</p></div><span class="btn">Start a bespoke brief <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></a>
+    <div hidden>
     </div>
   </div>
 </section>
@@ -792,7 +812,7 @@ footer.site ul a:hover{padding-left:6px}
 <!-- SPOTLIGHT -->
 <section class="sec spot">
   <div class="wrap">
-    <div class="ph clip"><img src="assets/img/deadlift-platform.jpg" alt="Salmon deadlift platform" loading="lazy" width="1600" height="1200"></div>
+    <div class="phwrap"><div class="ph clip"><img src="assets/img/deadlift-platform.jpg" alt="Salmon deadlift platform in a gym" loading="lazy" width="1600" height="1200"></div><div class="phsm rv" style="--d:.4s"><img src="https://salmonfitness.com/wp-content/uploads/2023/11/Deadlift-platform.jpg" alt="Deadlift platform product shot" loading="lazy" width="600" height="600"><span>Product shot</span></div></div>
     <div class="rv-r">
       <span class="eyebrow">Product spotlight</span>
       <h2>Deadlift platform</h2>
@@ -818,10 +838,10 @@ footer.site ul a:hover{padding-left:6px}
       <p>Cutting, welding, coating and assembly run under one roof in Qingdao. That keeps quality consistent and lets us change a design without starting a new supply chain.</p>
     </div>
     <div class="proc">
-      <figure class="rv" style="--d:0s"><span class="n">01</span><img src="assets/img/factory-laser.jpg" alt="Laser cutting at the Salmon Fitness factory" loading="lazy" width="1600" height="1200"><figcaption><b>Laser cutting</b><span>Clean, repeatable parts</span></figcaption></figure>
-      <figure class="rv" style="--d:.12s"><span class="n">02</span><img src="https://cdn-kiafn.nitrocdn.com/TfPFMBGVtFPuHeRqtUzTIHBvJKUuBNsi/assets/images/optimized/rev-621e6d5/salmonfitness.com/wp-content/uploads/2023/08/IMG_20211204_083300-1024x768.jpg" alt="Robot welding line" loading="lazy" width="1024" height="768"><figcaption><b>Robot welding</b><span>Consistent joints on every frame</span></figcaption></figure>
-      <figure class="rv" style="--d:.24s"><span class="n">03</span><img src="assets/img/factory-coating.jpg" alt="Automatic coating line" loading="lazy" width="1600" height="1089"><figcaption><b>Coating line</b><span>Automatic, in your colour</span></figcaption></figure>
-      <figure class="rv" style="--d:.36s"><span class="n">04</span><img src="https://cdn-kiafn.nitrocdn.com/TfPFMBGVtFPuHeRqtUzTIHBvJKUuBNsi/assets/images/optimized/rev-621e6d5/salmonfitness.com/wp-content/uploads/2023/08/IMG_20211203_132312-1024x768.jpg" alt="Assembly line" loading="lazy" width="1024" height="768"><figcaption><b>Assembly</b><span>Checked before it ships</span></figcaption></figure>
+      <figure class="rv" style="--d:0s"><img src="assets/img/factory-laser.jpg" alt="Laser cutting at the Salmon Fitness factory" loading="lazy" width="1600" height="1200"><figcaption><b>Laser cutting</b><span>Clean, repeatable parts</span></figcaption></figure>
+      <figure class="rv" style="--d:.12s"><img src="https://cdn-kiafn.nitrocdn.com/TfPFMBGVtFPuHeRqtUzTIHBvJKUuBNsi/assets/images/optimized/rev-621e6d5/salmonfitness.com/wp-content/uploads/2023/08/IMG_20211204_083300-1024x768.jpg" alt="Robot welding line" loading="lazy" width="1024" height="768"><figcaption><b>Robot welding</b><span>Consistent joints on every frame</span></figcaption></figure>
+      <figure class="rv" style="--d:.24s"><img src="assets/img/factory-coating.jpg" alt="Automatic coating line" loading="lazy" width="1600" height="1089"><figcaption><b>Coating line</b><span>Automatic, in your colour</span></figcaption></figure>
+      <figure class="rv" style="--d:.36s"><img src="https://cdn-kiafn.nitrocdn.com/TfPFMBGVtFPuHeRqtUzTIHBvJKUuBNsi/assets/images/optimized/rev-621e6d5/salmonfitness.com/wp-content/uploads/2023/08/IMG_20211203_132312-1024x768.jpg" alt="Assembly line" loading="lazy" width="1024" height="768"><figcaption><b>Assembly</b><span>Checked before it ships</span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -976,7 +996,6 @@ footer.site ul a:hover{padding-left:6px}
         <li>Bldg #2, Shouchuang Business Park, No.6 Changcheng South Road, Chengyang District, Qingdao, Shandong 266000, China</li>
         <li><b style="color:#fff">FIBO</b> 8 to 11 April 2027, Cologne</li></ul></div>
     </div>
-    <div class="mark" aria-hidden="true">SALMON FITNESS</div>
     <div class="legal"><span>&copy; 2026 Salmon Fitness. All rights reserved.</span><span><a href="https://salmonfitness.com/privacy-policy/">Privacy policy</a> &nbsp;&middot;&nbsp; Qingdao, China &nbsp;&middot;&nbsp; <a href="#top">Back to top &uarr;</a></span></div>
   </div>
 </footer>
@@ -1051,6 +1070,15 @@ footer.site ul a:hover{padding-left:6px}
     var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){count(e.target);co.unobserve(e.target);}});},{threshold:.6});
     $$('[data-count]').forEach(function(el){co.observe(el)});
   }
+
+  // category accordion
+  var pns=$$('.pn');
+  function setOn(p){pns.forEach(function(x){x.classList.toggle('on',x===p)});}
+  pns.forEach(function(p){
+    p.addEventListener('mouseenter',function(){if(matchMedia('(hover:hover) and (min-width:901px)').matches)setOn(p)});
+    p.addEventListener('focus',function(){setOn(p)});
+    p.addEventListener('click',function(e){if(!p.classList.contains('on')){e.preventDefault();setOn(p);}});
+  });
 
   // tabs
   var tabs=$$('.tab'),shelves=$$('.shelf');
