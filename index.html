@@ -63,12 +63,9 @@ p{margin:0}
 .js .clip.in{clip-path:inset(0 0 0 0)}
 
 /* ticker strip */
-.strip{background:var(--red);color:#fff;font-size:13px;overflow:hidden;white-space:nowrap}
-.strip .track{display:inline-flex;gap:56px;padding-block:9px;animation:tick 38s linear infinite}
-.strip .track span{display:inline-flex;gap:10px;align-items:center}
-.strip .track i{width:5px;height:5px;background:#fff;border-radius:50%;opacity:.7}
-.strip:hover .track{animation-play-state:paused}
-@keyframes tick{to{transform:translateX(-50%)}}
+.strip{background:var(--red);color:#fff;font-size:13px}
+.strip .wrap{display:flex;gap:16px;justify-content:space-between;align-items:center;padding-block:9px;flex-wrap:wrap}
+.strip a{color:#fff;text-decoration:none;font-weight:600;border-bottom:1px solid #fff}
 
 /* header */
 header.nav{background:rgba(10,15,24,.96);backdrop-filter:blur(10px);position:sticky;top:env(safe-area-inset-top,0px);z-index:50;border-bottom:1px solid var(--line);transition:box-shadow .3s}
@@ -93,16 +90,19 @@ header.nav.stuck .brandmark{width:150px;height:75px}
 .hero{position:relative;background:var(--ink);color:#fff;overflow:hidden;isolation:isolate}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(10,15,24,.94) 0%,rgba(10,15,24,.8) 42%,rgba(10,15,24,.5) 100%),rgba(17,26,40,.3)}
-.hero .wrap{position:relative;z-index:3;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-block:84px 96px}
+.hero .wrap{position:relative;z-index:3;display:flex;justify-content:center;text-align:center;align-items:center;min-height:min(82vh,760px);padding-block:84px 110px}
+.hero .wrap>div{max-width:900px;display:flex;flex-direction:column;align-items:center}
+.hero::after{background:radial-gradient(ellipse at center,rgba(10,15,24,.72) 0%,rgba(10,15,24,.55) 55%,rgba(10,15,24,.82) 100%)!important}
+.hero .tagrow,.hero .cta-row{justify-content:center}
 .tagrow{display:flex;align-items:center;gap:12px;margin-bottom:22px}
 .tag{background:var(--red);font-family:var(--font-m);font-size:11.5px;letter-spacing:.14em;padding:6px 10px;border-radius:4px}
 .t2{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-d)}
 .hero h1{font-size:clamp(54px,8vw,112px);font-weight:800}
 .hero h1 em{display:block;font-style:normal;color:var(--red)}
 .hero .when{font-family:var(--font-m);letter-spacing:.1em;text-transform:uppercase;font-size:14px;margin-top:20px;color:#D5DCE8}
-.hero .lead{max-width:50ch;margin-top:18px;color:#C3CCDB;font-size:19px}
+.hero .lead{max-width:54ch;margin-top:18px;color:#C3CCDB;font-size:19px}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
-.facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:0;margin:40px 0 0}
+.facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:center;text-align:center;gap:0;margin:40px 0 0}
 .facts div{padding-right:28px}.facts div+div{padding-left:28px;border-left:1px solid rgba(255,255,255,.2)}
 .facts dt{font-family:var(--font-m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-d)}
 .facts dd{margin:4px 0 0;font-weight:600}
@@ -120,8 +120,8 @@ header.nav.stuck .brandmark{width:150px;height:75px}
 
 /* trust marquee */
 .trust{background:var(--white);border-bottom:1px solid #E1E4EA;overflow:hidden}
-.trust .track{display:inline-flex;gap:60px;padding-block:20px;white-space:nowrap;animation:tick 34s linear infinite}
-.trust span{font-family:var(--font-d);text-transform:uppercase;font-weight:700;font-size:22px;letter-spacing:.04em;color:#3B475C;display:inline-flex;align-items:center;gap:60px}
+.trust .track{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 48px;padding:20px var(--gutter)}
+.trust span{font-family:var(--font-d);text-transform:uppercase;font-weight:700;font-size:20px;letter-spacing:.04em;color:#3B475C;display:inline-flex;align-items:center;gap:48px}
 .trust span::after{content:"";width:8px;height:8px;background:var(--red);transform:rotate(45deg)}
 
 /* categories */
@@ -362,8 +362,7 @@ footer.site .legal{margin-top:48px;padding-top:22px;border-top:1px solid var(--l
   header.nav .wrap{position:relative}
 }
 @media (max-width:1040px){
-  .hero .wrap{grid-template-columns:1fr;gap:44px;padding-block:56px 72px}
-  .stage{max-width:640px}
+  .hero .wrap{padding-block:56px 90px}
   .cats{grid-template-columns:repeat(3,1fr)}
   .shelf.on{grid-template-columns:repeat(3,1fr);grid-template-rows:none}
   .promos,.colour .wrap,.split,.meet .wrap,.spot .wrap{grid-template-columns:1fr;gap:40px}
@@ -381,7 +380,6 @@ footer.site .legal{margin-top:48px;padding-top:22px;border-top:1px solid var(--l
   header.nav .wrap{gap:10px}
   .cat .cp{padding:12px}.cat .go{display:none}.cat h3{font-size:21px}.cat .cp>div{min-width:0}
   .facts{grid-template-columns:1fr}.facts div+div{padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.2);margin-top:16px;padding-top:14px}
-  .stage{grid-template-columns:1fr 1fr}.stage figure:first-child{aspect-ratio:4/3}.stage figure:not(:first-child){aspect-ratio:1}
   .cats{grid-template-columns:repeat(2,1fr)}
   /* two rows on every screen: swipe sideways */
   .shelf.on{display:grid;grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-flow:column;grid-auto-columns:46%;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:10px;margin-right:calc(-1*var(--gutter-r))}
@@ -410,9 +408,7 @@ footer.site .legal{margin-top:48px;padding-top:22px;border-top:1px solid var(--l
 <div id="bar"></div>
 
 <div class="strip" aria-label="Announcement">
-  <div class="track" id="tick">
-    <span>FIBO Global Fitness, Cologne<i></i></span><span>8 to 11 April 2027<i></i></span><span>Book a meeting at the show<i></i></span><span>Racks, benches, bars and plates<i></i></span><span>Bespoke colour on every frame<i></i></span><span>OEM and private label<i></i></span><span>FIBO Global Fitness, Cologne<i></i></span><span>8 to 11 April 2027<i></i></span><span>Book a meeting at the show<i></i></span><span>Racks, benches, bars and plates<i></i></span><span>Bespoke colour on every frame<i></i></span><span>OEM and private label<i></i></span>
-  </div>
+  <div class="wrap"><span><b>FIBO Global Fitness</b> &nbsp;8 to 11 April 2027, Cologne, Germany</span><a href="#meet">Book a meeting at the show</a></div>
 </div>
 
 <header class="nav" id="hdr">
@@ -460,16 +456,11 @@ footer.site .legal{margin-top:48px;padding-top:22px;border-top:1px solid var(--l
         <div><dt>Hall and stand</dt><dd><span class="tbc">to be added</span></dd></div>
       </dl>
     </div>
-    <div class="stage" aria-label="Salmon Fitness racks">
-      <figure class="rv" style="--d:.3s"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Golden_M24.jpg" alt="APPOLLO Power Rack in gold" width="600" height="600"><figcaption>APPOLLO Power Rack</figcaption></figure>
-      <figure class="rv" style="--d:.45s"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Half-Rack_Red_M24.jpg" alt="APPOLLO Half Rack in red" width="300" height="300"><figcaption>Half Rack</figcaption></figure>
-      <figure class="rv" style="--d:.6s"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Single-Rack_Black_M24.jpg" alt="APPOLLO Single Rack in black" width="300" height="300"><figcaption>Single Rack</figcaption></figure>
-    </div>
   </div>
   <span class="scrollcue" aria-hidden="true"></span>
 </section>
 
-<div class="trust" aria-hidden="true"><div class="track"><span>EN 957-1</span><span>ASTM F2276-10</span><span>TÜV tested</span><span>Intertek tested</span><span>Bespoke colour</span><span>OEM &amp; private label</span><span>Made in Qingdao</span><span>20+ years engineering</span><span>EN 957-1</span><span>ASTM F2276-10</span><span>TÜV tested</span><span>Intertek tested</span><span>Bespoke colour</span><span>OEM &amp; private label</span><span>Made in Qingdao</span><span>20+ years engineering</span></div></div>
+<div class="trust"><div class="track"><span>EN 957-1</span><span>ASTM F2276-10</span><span>TÜV tested</span><span>Intertek tested</span><span>Bespoke colour</span><span>OEM &amp; private label</span><span>Made in Qingdao</span><span>20+ years engineering</span></div></div>
 
 <!-- CATEGORIES -->
 <section class="sec" id="products">
