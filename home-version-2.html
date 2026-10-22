@@ -317,7 +317,7 @@ details p a{color:var(--text);font-weight:600}
 .legal{margin-top:24px;font-size:13.5px}
 .fcols>div{min-width:0}
 @media (max-width:1040px){.fcols{grid-template-columns:1fr 1fr}.fcols>div:first-child,.fcols>div:last-child{grid-column:1/-1}}
-@media (max-width:420px){.fcols{grid-template-columns:1fr}.nl{flex-wrap:wrap}.nl .btn{width:100%}}
+@media (max-width:420px){.fcols{grid-template-columns:1fr 1fr;gap:28px 16px}.fcols>div:nth-child(4){grid-column:1/-1}.nl{flex-wrap:wrap}.nl .btn{width:100%}}
 
 /* drawer + cookie */
 .drawer{position:fixed;z-index:90;right:0;top:0;bottom:0;width:min(420px,100%);background:#fff;transform:translateX(105%);transition:transform .5s var(--ease);display:flex;flex-direction:column;box-shadow:-30px 0 60px rgba(18,17,16,.2)}
@@ -343,6 +343,10 @@ details p a{color:var(--text);font-weight:600}
 .float a{padding:8px 0;margin-top:0}
 .ask li a{display:inline-flex;align-items:center;min-height:40px}
 @media (max-width:1040px){.foot ul a{min-width:44px}}
+.hgrid>*,.spgrid>*,.cgrid>*,.fgrid>*,.mgrid>*,.faqgrid>*,.stats>*,.head>*{min-width:0}
+.spot,.colour,.fac,.part,.meet,.faq{overflow-x:clip}
+.fphotos img{height:auto}.cstage img,.spimg img{height:auto;max-width:100%}
+@media (max-width:560px){.stats b[style]{font-size:26px!important;line-height:1.05}.fphotos{gap:14px}.fphotos figure{border-radius:20px}}
 </style>
 <script>document.documentElement.classList.remove('no-js')</script>
 </head>
