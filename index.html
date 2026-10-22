@@ -126,12 +126,36 @@ header.nav.stuck .brandmark{width:150px;height:75px}
 @keyframes wheel{to{transform:translateY(14px);opacity:0}}
 
 /* trust icons */
-.trustsec{background:#fff;border-bottom:1px solid #E1E4EA;padding-block:56px}
-.trgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #E1E4EA;border-radius:18px;overflow:hidden;background:#fff}
-.tr{position:relative;padding:28px 26px 30px;border-right:1px solid #E1E4EA;border-bottom:1px solid #E1E4EA;transition:background .35s}
+.trustsec{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(135deg,#FFF5F5 0%,#F3F0FF 35%,#EAF4FF 65%,#E9FBF6 100%);border-bottom:1px solid #E1E4EA;padding-block:72px}
+.trustsec::before{content:"";position:absolute;inset:0;z-index:-2;background:url(assets/img/gym-rack-blue.jpg) center/cover;opacity:.12;filter:grayscale(.4);mix-blend-mode:multiply}
+.trbg{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.trbg .b{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;animation:drift 16s ease-in-out infinite}
+.trbg .b1{width:340px;height:340px;left:-80px;top:-60px;background:#FF6B73}
+.trbg .b2{width:380px;height:380px;right:-100px;top:10%;background:#8F6BFF;animation-delay:-5s}
+.trbg .b3{width:320px;height:320px;left:30%;bottom:-120px;background:#2FD3B8;animation-delay:-9s}
+.trbg .b4{width:260px;height:260px;right:22%;bottom:-60px;background:#FFC24D;animation-delay:-3s}
+@keyframes drift{50%{transform:translate(50px,-40px) scale(1.12)}}
+.trbg .s{position:absolute;border-radius:14px;animation:spin 18s linear infinite,float 8s ease-in-out infinite}
+.trbg .s1{width:54px;height:54px;left:6%;top:14%;background:var(--c-red);opacity:.85}
+.trbg .s2{width:36px;height:36px;left:46%;top:6%;background:var(--c-amber);background:#F59E0B;border-radius:50%;opacity:.9;animation-duration:22s,6s}
+.trbg .s3{width:64px;height:64px;right:7%;top:12%;background:var(--c-violet);opacity:.8;animation-direction:reverse,normal}
+.trbg .s4{width:44px;height:44px;left:10%;bottom:10%;background:var(--c-teal);opacity:.85;animation-duration:26s,9s}
+.trbg .s5{width:30px;height:30px;right:16%;bottom:12%;background:var(--c-blue);opacity:.9;animation-duration:15s,7s}
+.trbg .s6{width:48px;height:48px;left:52%;bottom:6%;border:6px solid var(--c-red);background:transparent;border-radius:50%;animation-duration:30s,10s}
+@keyframes spin{to{rotate:360deg}}
+.trgrid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,.9);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.72);backdrop-filter:blur(14px);box-shadow:0 30px 70px rgba(60,40,140,.18)}
+.tr{--mx:50%;--my:50%;position:relative;padding:28px 26px 30px;border-right:1px solid rgba(20,30,60,.08);border-bottom:1px solid rgba(20,30,60,.08);transition:background .35s;overflow:hidden}
+.tr::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--mx) var(--my),color-mix(in srgb,var(--k) 22%,transparent),transparent 70%)}
+.tr:hover::before{opacity:1}
+.tr::after{content:"";position:absolute;left:0;bottom:0;height:4px;width:100%;background:var(--k);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.tr:hover::after{transform:scaleX(1)}
+.tr>*{position:relative;z-index:1}
 .tr:nth-child(4n){border-right:0}.tr:nth-last-child(-n+4){border-bottom:0}
-.tr:hover{background:var(--tn)}
-.tr .ic{display:grid;place-items:center;width:58px;height:58px;border-radius:16px;background:var(--tn);color:var(--k);margin-bottom:16px;transition:transform .5s var(--ease),background .3s,color .3s}
+.tr:hover{background:color-mix(in srgb,var(--tn) 70%,transparent)}
+.tr .ic::after{content:"";position:absolute;inset:-2px;border-radius:18px;border:2px solid var(--k);opacity:0;transform:scale(.9)}
+.tr:hover .ic::after{animation:ring 1.2s var(--ease) infinite}
+@keyframes ring{0%{opacity:.7;transform:scale(.95)}100%{opacity:0;transform:scale(1.45)}}
+.tr .ic{position:relative;display:grid;place-items:center;width:58px;height:58px;border-radius:16px;background:var(--tn);color:var(--k);margin-bottom:16px;transition:transform .5s var(--ease),background .3s,color .3s}
 .tr .ic svg{width:28px;height:28px}
 .tr:hover .ic{transform:translateY(-4px) rotate(-6deg);background:var(--k);color:#fff}
 .tr h3{font-size:26px;font-weight:800;line-height:1}
@@ -529,6 +553,10 @@ footer.site ul a:hover{padding-left:6px}
 </section>
 
 <section class="trustsec" aria-label="Quality and credentials">
+  <div class="trbg" aria-hidden="true">
+    <i class="b b1"></i><i class="b b2"></i><i class="b b3"></i><i class="b b4"></i>
+    <i class="s s1"></i><i class="s s2"></i><i class="s s3"></i><i class="s s4"></i><i class="s s5"></i><i class="s s6"></i>
+  </div>
   <div class="wrap">
     <div class="trgrid">
       <div class="tr rv" style="--d:0.00s;--k:var(--c-blue);--tn:#DCE8FF"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><h3>EN 957-1</h3><p>European standard for stationary training equipment.</p></div>
@@ -1094,7 +1122,7 @@ footer.site ul a:hover{padding-left:6px}
   });});
 
   // card glow
-  $$('.pc').forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});});
+  $$('.pc,.tr').forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});});
 
   // colour swatches
   var img=$('#swImg'),lab=$('#swLabel');
