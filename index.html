@@ -163,42 +163,30 @@ header.nav.stuck .brandmark{width:150px;height:75px}
 @media (max-width:1040px){.trgrid{grid-template-columns:repeat(2,1fr)}.tr:nth-child(4n){border-right:1px solid #E1E4EA}.tr:nth-child(2n){border-right:0}.tr:nth-last-child(-n+4){border-bottom:1px solid #E1E4EA}.tr:nth-last-child(-n+2){border-bottom:0}}
 @media (max-width:480px){.tr{padding:20px 16px}.tr h3{font-size:22px}.tr .ic{width:48px;height:48px}}
 
-/* categories accordion */
-.bento-sec{position:relative;overflow:hidden}
-.bento-sec::before{content:"";position:absolute;width:720px;height:720px;right:-240px;top:-240px;border-radius:50%;background:radial-gradient(circle,rgba(224,39,45,.22),transparent 65%);pointer-events:none}
-.acc{position:relative;display:flex;gap:12px;height:560px}
-.pn{position:relative;flex:1;min-width:0;border-radius:20px;overflow:hidden;text-decoration:none;color:var(--ink);background:linear-gradient(165deg,var(--tint),color-mix(in srgb,var(--acc) 38%,var(--tint)));transition:flex .7s var(--ease),box-shadow .5s;box-shadow:0 0 0 1px rgba(255,255,255,.06)}
-.pn.on{flex:4.2;box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 0 2px var(--acc)}
-.pn .pic{position:absolute;left:0;right:0;top:0;bottom:170px}
-.pn .pic img{mix-blend-mode:multiply;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px 10px;transition:transform .9s var(--ease)}
-.pn.on .pic img{transform:scale(1.12)}
-.pn .vt{position:absolute;left:0;right:0;bottom:0;height:170px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px;transition:opacity .35s}
-.pn .vt span{writing-mode:vertical-rl;transform:rotate(180deg);font:800 28px var(--font-d);text-transform:uppercase;letter-spacing:.03em;white-space:nowrap}
-.pn .vt::before{display:none}
-.pn.on .vt{opacity:0}
-.pn .ex{position:absolute;left:0;right:0;bottom:0;padding:22px 26px 26px;opacity:0;transform:translateY(20px);transition:opacity .4s,transform .6s var(--ease);pointer-events:none;background:linear-gradient(180deg,transparent,rgba(255,255,255,.55) 40%)}
-.pn.on .ex{opacity:1;transform:none;transition-delay:.25s;pointer-events:auto}
-.pn .chip{display:inline-block;background:var(--acc);color:#fff;font:500 11px var(--font-m);letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin-bottom:10px}
-.pn h3{font-size:clamp(36px,3.6vw,52px);font-weight:800}
-.pn p{color:#2B3547;margin:8px 0 16px;max-width:36ch;font-size:15.5px}
-.pn .go{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;font-weight:600;font-size:14.5px;padding:12px 20px;border-radius:999px;transition:background .25s}
-.pn:hover .go{background:var(--acc)}
-.pn .go svg{width:15px;height:15px}
-.bar{position:relative;margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:26px 32px;border-radius:20px;background:linear-gradient(120deg,#E0272D,#7B4DFF);color:#fff;text-decoration:none;transition:transform .4s var(--ease)}
+/* categories simple grid */
+.cats-sec{background:var(--paper)}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cc{display:flex;flex-direction:column;background:#fff;border:1px solid #E1E4EA;border-radius:16px;overflow:hidden;text-decoration:none;transition:transform .4s var(--ease),box-shadow .4s,border-color .3s}
+.cc:hover{transform:translateY(-6px);box-shadow:0 24px 44px rgba(10,15,24,.14);border-color:var(--acc)}
+.cc .im{position:relative;aspect-ratio:4/3;background:radial-gradient(circle at 50% 45%,#fff 0,var(--tint) 78%);overflow:hidden}
+.cc .im img{mix-blend-mode:multiply;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:20px;transition:transform .7s var(--ease)}
+.cc:hover .im img{transform:scale(1.08)}
+.cc .chip{position:absolute;left:14px;top:14px;z-index:2;background:var(--acc);color:#fff;font:500 11px var(--font-m);letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.cc .tx{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px 18px;border-top:3px solid var(--acc)}
+.cc h3{font-size:28px;font-weight:800;line-height:1}
+.cc p{color:var(--muted);font-size:14px;margin-top:6px;line-height:1.35}
+.cc .go{flex:none;display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14px;color:var(--acc);white-space:nowrap}
+.cc .go svg{width:15px;height:15px;transition:transform .3s var(--ease)}
+.cc:hover .go svg{transform:translateX(5px)}
+.bar{position:relative;margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:26px 32px;border-radius:16px;background:linear-gradient(120deg,#E0272D,#7B4DFF);color:#fff;text-decoration:none;transition:transform .4s var(--ease)}
 .bar:hover{transform:translateY(-4px)}
 .bar h3{font-size:clamp(28px,3.2vw,42px);font-weight:800}
 .bar p{color:#F2E9FF;margin-top:6px}
 .bar .btn{background:#fff;color:var(--red);white-space:nowrap}
-.bar .btn svg,.pn .go svg{width:15px;height:15px;flex:none}
-@media (max-width:900px){
-  .acc{flex-direction:column;height:auto}
-  .pn{flex:none;height:92px;transition:height .6s var(--ease),box-shadow .4s}
-  .pn.on{flex:none;height:440px}
-  .pn .pic{bottom:150px}
-  .pn:not(.on) .pic{opacity:0}
-  .pn .vt{height:92px;justify-content:flex-start;align-items:center;padding:0 22px}
-  .pn .vt span{writing-mode:horizontal-tb;transform:none;font-size:30px}
-}
+.bar .btn svg,.cc .go svg{width:15px;height:15px;flex:none}
+@media (max-width:1040px){.cgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.cgrid{gap:12px}.cc .tx{flex-direction:column;align-items:flex-start;padding:14px}.cc h3{font-size:22px}.cc p{display:none}.cc .im img{padding:10px}}
+
 /* shop shelf */
 .shop{background:linear-gradient(180deg,#fff 0,#FBF7FF 45%,#F2F8FF 100%);position:relative}
 .rainbow{height:5px;background:linear-gradient(90deg,var(--c-red),var(--c-amber) 20%,var(--c-green) 40%,var(--c-teal) 60%,var(--c-blue) 80%,var(--c-violet))}
@@ -217,8 +205,19 @@ header.nav.stuck .brandmark{width:150px;height:75px}
 .pc::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(240px circle at var(--mx) var(--my),color-mix(in srgb,var(--acc,#E0272D) 14%,transparent),transparent 70%)}
 .pc:hover::before{opacity:1}
 .pc .im{position:relative;aspect-ratio:1;background:radial-gradient(circle at 50% 45%,#fff 0,var(--tint,#fff) 72%);overflow:hidden;display:block}
-.pc .im img{mix-blend-mode:multiply;width:100%;height:100%;object-fit:contain;padding:18px;transition:transform .7s var(--ease)}
-.pc:hover .im img{transform:scale(1.09) rotate(-1deg)}
+.pc .im img{mix-blend-mode:multiply;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:18px;transition:transform .8s var(--ease),opacity .5s}
+.pc .i2{opacity:0;transform:scale(1.06)}
+.pc.has2:hover .i1{opacity:0;transform:scale(.94)}
+.pc.has2:hover .i2{opacity:1;transform:scale(1)}
+.pc.has2:hover .im img{transform:none}
+.pc.zoom .im img{transform-origin:50% 60%}
+.pc.zoom:hover .im img{transform:scale(1.32) translateY(-2%)}
+.sws{display:flex;gap:8px;margin-top:6px}
+.sw2{width:20px;height:20px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #C9CFD9;background:var(--sc);cursor:pointer;padding:0;transition:transform .25s var(--ease),box-shadow .25s}
+.sw2:hover{transform:scale(1.2)}
+.sw2[aria-pressed="true"]{box-shadow:0 0 0 2px var(--acc)}
+.pc .info{position:relative;z-index:3}
+.pc.hasSw:hover .im img{transform:scale(1.08)}
 .badge{position:absolute;left:12px;top:12px;z-index:3;background:var(--ink);color:#fff;font-family:var(--font-m);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:4px}
 .badge.r{background:var(--red)}
 .add{position:absolute;left:12px;right:12px;bottom:12px;z-index:3;transform:translateY(130%);transition:transform .45s var(--ease);background:var(--acc,var(--red));color:#fff;border:0;border-radius:999px;padding:12px;font:600 14.5px var(--font-b);cursor:pointer}
@@ -287,7 +286,7 @@ header.nav.stuck .brandmark{width:150px;height:75px}
 
 /* spotlight */
 .spot .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
-.spot .ph{border-radius:var(--r);overflow:hidden;position:relative;aspect-ratio:4/3;background:#222}
+.spot .ph{border-radius:var(--r);overflow:hidden;position:relative;aspect-ratio:3/2;background:#222}
 .spot .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
 .spot .ph:hover img{transform:scale(1.05)}
 .phwrap{position:relative;padding-bottom:36px}
@@ -572,19 +571,19 @@ footer.site ul a:hover{padding-left:6px}
 </section>
 
 <!-- CATEGORIES -->
-<section class="sec dark bento-sec" id="products">
+<section class="sec cats-sec" id="products">
   <div class="wrap">
     <div class="sec-head rv">
-      <div><span class="eyebrow">Shop by category</span><h2>Find your <span style="color:var(--red)">equipment</span></h2></div>
+      <div><span class="eyebrow">Browse the range</span><h2>Shop by <span style="color:var(--red)">category</span></h2></div>
       <p>Six families built in one factory. Pick a category to see the full range, or ask us for something bespoke.</p>
     </div>
-    <div class="acc" id="acc">
-      <a class="pn on" style="--acc:#E0272D;--tint:#FFE1E2" href="https://salmonfitness.com/product-category/racks/"><div class="pic"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Green_M24.jpg" alt="Racks &amp; Rigs" loading="lazy" width="600" height="600"></div><div class="vt"><span>Racks &amp; Rigs</span></div><div class="ex"><span class="chip">29 models</span><h3>Racks &amp; Rigs</h3><p>Power racks, half racks, single racks and free standing rigs</p><span class="go">Shop Racks &amp; Rigs <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="pn" style="--acc:#2F6BFF;--tint:#DCE8FF" href="https://salmonfitness.com/product-category/benches/"><div class="pic"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Commercial-FID-Bench.jpg" alt="Benches" loading="lazy" width="600" height="600"></div><div class="vt"><span>Benches</span></div><div class="ex"><h3>Benches</h3><p>FID, flat, hip thruster and hyper extension</p><span class="go">Shop Benches <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="pn" style="--acc:#F59E0B;--tint:#FFE9BF" href="https://salmonfitness.com/product-category/bars-plates/"><div class="pic"><img src="https://salmonfitness.com/wp-content/uploads/2023/09/Calibrated-Steel-Plate.jpg" alt="Bars &amp; Plates" loading="lazy" width="600" height="600"></div><div class="vt"><span>Bars &amp; Plates</span></div><div class="ex"><span class="chip">44 products</span><h3>Bars &amp; Plates</h3><p>Cross training bars, plates, kettlebells</p><span class="go">Shop Bars &amp; Plates <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="pn" style="--acc:#16A34A;--tint:#DAF5E1" href="https://salmonfitness.com/product-category/storage-solutions/"><div class="pic"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/2-Tier-dumbbell-rack-10-pair.jpg" alt="Storage" loading="lazy" width="600" height="600"></div><div class="vt"><span>Storage</span></div><div class="ex"><h3>Storage</h3><p>Dumbbell racks, plate trees, barbell racks</p><span class="go">Shop Storage <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="pn" style="--acc:#7B4DFF;--tint:#E6DDFF" href="https://salmonfitness.com/product-category/speciality/"><div class="pic"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/GHD.jpg" alt="Speciality" loading="lazy" width="600" height="600"></div><div class="vt"><span>Speciality</span></div><div class="ex"><h3>Speciality</h3><p>GHD, reverse hyper, dip stand</p><span class="go">Shop Speciality <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="pn" style="--acc:#0E9F92;--tint:#D1F4EE" href="https://salmonfitness.com/product-category/conditioning/"><div class="pic"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Gymnastics-Ring.jpg" alt="Conditioning" loading="lazy" width="600" height="600"></div><div class="vt"><span>Conditioning</span></div><div class="ex"><h3>Conditioning</h3><p>Rings, resistance bands and tubes, wall balls</p><span class="go">Shop Conditioning <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+    <div class="cgrid">
+      <a class="cc rv" style="--d:0.00s;--acc:#E0272D;--tint:#FFE1E2" href="https://salmonfitness.com/product-category/racks/"><div class="im"><span class="chip">29 models</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Green_M24.jpg" alt="Racks &amp; Rigs" loading="lazy" width="600" height="600"></div><div class="tx"><div><h3>Racks &amp; Rigs</h3><p>Power racks, half racks, single racks and free standing rigs</p></div><span class="go">Shop now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="cc rv" style="--d:0.07s;--acc:#2F6BFF;--tint:#DCE8FF" href="https://salmonfitness.com/product-category/benches/"><div class="im"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Commercial-FID-Bench.jpg" alt="Benches" loading="lazy" width="600" height="600"></div><div class="tx"><div><h3>Benches</h3><p>FID, flat, hip thruster and hyper extension</p></div><span class="go">Shop now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="cc rv" style="--d:0.14s;--acc:#F59E0B;--tint:#FFE9BF" href="https://salmonfitness.com/product-category/bars-plates/"><div class="im"><span class="chip">44 products</span><img src="https://salmonfitness.com/wp-content/uploads/2023/09/Calibrated-Steel-Plate.jpg" alt="Bars &amp; Plates" loading="lazy" width="600" height="600"></div><div class="tx"><div><h3>Bars &amp; Plates</h3><p>Cross training bars, plates, kettlebells</p></div><span class="go">Shop now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="cc rv" style="--d:0.21s;--acc:#16A34A;--tint:#DAF5E1" href="https://salmonfitness.com/product-category/storage-solutions/"><div class="im"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/2-Tier-dumbbell-rack-10-pair.jpg" alt="Storage" loading="lazy" width="600" height="600"></div><div class="tx"><div><h3>Storage</h3><p>Dumbbell racks, plate trees, barbell racks</p></div><span class="go">Shop now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="cc rv" style="--d:0.28s;--acc:#7B4DFF;--tint:#E6DDFF" href="https://salmonfitness.com/product-category/speciality/"><div class="im"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/GHD.jpg" alt="Speciality" loading="lazy" width="600" height="600"></div><div class="tx"><div><h3>Speciality</h3><p>GHD, reverse hyper, dip stand</p></div><span class="go">Shop now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="cc rv" style="--d:0.35s;--acc:#0E9F92;--tint:#D1F4EE" href="https://salmonfitness.com/product-category/conditioning/"><div class="im"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Gymnastics-Ring.jpg" alt="Conditioning" loading="lazy" width="600" height="600"></div><div class="tx"><div><h3>Conditioning</h3><p>Rings, resistance bands and tubes, wall balls</p></div><span class="go">Shop now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
 
     </div>
     <a class="bar rv" href="#meet"><div><h3>Need something made for you?</h3><p>Your design or ours, your colour and your name. Tell us the brief.</p></div><span class="btn">Start a bespoke brief <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></a>
@@ -609,165 +608,165 @@ footer.site ul a:hover{padding-left:6px}
 
     </div>
     <div class="shelf on" id="sh-feat" role="tabpanel">
-<article class="pc" style="--d:0.00s;--acc:#E0272D;--tint:#FFE1E2">
-  <a class="im" href="https://salmonfitness.com/product/ares-power-rack/" tabindex="-1" aria-hidden="true"><span class="badge">Bespoke colour</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Green_M16.jpg" alt="ARES Power Rack" loading="lazy" width="600" height="600"></a>
+<article class="pc hasSw" style="--d:0.00s;--acc:#E0272D;--tint:#FFE1E2">
+  <a class="im" href="https://salmonfitness.com/product/ares-power-rack/" tabindex="-1" aria-hidden="true"><span class="badge">Bespoke colour</span><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Green_M16.jpg" alt="ARES Power Rack" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="ares-power-rack" data-name="ARES Power Rack" data-img="2023/10/Power-Rack_Green_M16.jpg">Add to quote</button>
-  <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/ares-power-rack/">ARES Power Rack</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/ares-power-rack/">Details</a></div></div>
+  <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/ares-power-rack/">ARES Power Rack</a></h3><div class="sws" role="group" aria-label="Colour"><button class="sw2" type="button" aria-label="Green" aria-pressed="true" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Green_M16.jpg" style="--sc:#2E8B57"></button><button class="sw2" type="button" aria-label="Blue" aria-pressed="false" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Blue_M16.jpg" style="--sc:#2F6BFF"></button><button class="sw2" type="button" aria-label="Gold" aria-pressed="false" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Golden_M16.jpg" style="--sc:#C9A227"></button></div><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/ares-power-rack/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.05s;--acc:#E0272D;--tint:#FFE1E2">
-  <a class="im" href="https://salmonfitness.com/product/appollo-half-rack/" tabindex="-1" aria-hidden="true"><span class="badge">Bespoke colour</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Half-Rack_Orange_M16.jpg" alt="ARES Half Rack" loading="lazy" width="600" height="600"></a>
+<article class="pc hasSw" style="--d:0.05s;--acc:#E0272D;--tint:#FFE1E2">
+  <a class="im" href="https://salmonfitness.com/product/appollo-half-rack/" tabindex="-1" aria-hidden="true"><span class="badge">Bespoke colour</span><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Half-Rack_Orange_M16.jpg" alt="ARES Half Rack" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="appollo-half-rack" data-name="ARES Half Rack" data-img="2023/10/Half-Rack_Orange_M16.jpg">Add to quote</button>
-  <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/appollo-half-rack/">ARES Half Rack</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/appollo-half-rack/">Details</a></div></div>
+  <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/appollo-half-rack/">ARES Half Rack</a></h3><div class="sws" role="group" aria-label="Colour"><button class="sw2" type="button" aria-label="Orange" aria-pressed="true" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Half-Rack_Orange_M16.jpg" style="--sc:#F28C28"></button><button class="sw2" type="button" aria-label="Black" aria-pressed="false" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Half-Rack_Black_M16.jpg" style="--sc:#16181D"></button><button class="sw2" type="button" aria-label="Blue" aria-pressed="false" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Half-Rack_Blue_M16.jpg" style="--sc:#2F6BFF"></button></div><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/appollo-half-rack/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.10s;--acc:#E0272D;--tint:#FFE1E2">
-  <a class="im" href="https://salmonfitness.com/product/free-standing-1-bay-rig/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2024/01/Free-standing-1_bay-rig.jpg" alt="Free standing 1-bay rig" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.10s;--acc:#E0272D;--tint:#FFE1E2">
+  <a class="im" href="https://salmonfitness.com/product/free-standing-1-bay-rig/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2024/01/Free-standing-1_bay-rig.jpg" alt="Free standing 1-bay rig" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="free-standing-1-bay-rig" data-name="Free standing 1-bay rig" data-img="2024/01/Free-standing-1_bay-rig.jpg">Add to quote</button>
   <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/free-standing-1-bay-rig/">Free standing 1-bay rig</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/free-standing-1-bay-rig/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.15s;--acc:#E0272D;--tint:#FFE1E2">
-  <a class="im" href="https://salmonfitness.com/product/deadlift-platform/" tabindex="-1" aria-hidden="true"><span class="badge r">Spotlight</span><img src="https://salmonfitness.com/wp-content/uploads/2023/11/Deadlift-platform.jpg" alt="Deadlift platform" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.15s;--acc:#E0272D;--tint:#FFE1E2">
+  <a class="im" href="https://salmonfitness.com/product/deadlift-platform/" tabindex="-1" aria-hidden="true"><span class="badge r">Spotlight</span><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/11/Deadlift-platform.jpg" alt="Deadlift platform" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="deadlift-platform" data-name="Deadlift platform" data-img="2023/11/Deadlift-platform.jpg">Add to quote</button>
   <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/deadlift-platform/">Deadlift platform</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/deadlift-platform/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.20s;--acc:#2F6BFF;--tint:#DCE8FF">
-  <a class="im" href="https://salmonfitness.com/product/premium-adjustable-bench/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Weight-Bench.jpg" alt="Premium Adjustable Bench" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.20s;--acc:#2F6BFF;--tint:#DCE8FF">
+  <a class="im" href="https://salmonfitness.com/product/premium-adjustable-bench/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Weight-Bench.jpg" alt="Premium Adjustable Bench" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="premium-adjustable-bench" data-name="Premium Adjustable Bench" data-img="2023/10/Weight-Bench.jpg">Add to quote</button>
   <div class="info"><span class="cl">Benches</span><h3><a href="https://salmonfitness.com/product/premium-adjustable-bench/">Premium Adjustable Bench</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/premium-adjustable-bench/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.25s;--acc:#B45309;--tint:#FFE9BF">
-  <a class="im" href="https://salmonfitness.com/product/20kg-mens-cross-training-bar/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/20kg-Mens-Cross-Training-Bar.jpg" alt="20kg Men&#x27;s Cross Training Bar" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.25s;--acc:#B45309;--tint:#FFE9BF">
+  <a class="im" href="https://salmonfitness.com/product/20kg-mens-cross-training-bar/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/20kg-Mens-Cross-Training-Bar.jpg" alt="20kg Men&#x27;s Cross Training Bar" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="20kg-mens-cross-training-bar" data-name="20kg Men&#x27;s Cross Training Bar" data-img="2023/10/20kg-Mens-Cross-Training-Bar.jpg">Add to quote</button>
   <div class="info"><span class="cl">Bars &amp; Plates</span><h3><a href="https://salmonfitness.com/product/20kg-mens-cross-training-bar/">20kg Men&#x27;s Cross Training Bar</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/20kg-mens-cross-training-bar/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.30s;--acc:#B45309;--tint:#FFE9BF">
-  <a class="im" href="https://salmonfitness.com/product/cast-iron-kettlebell/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Cast-Iron-Kettlebell.jpg" alt="Cast Iron Kettlebell" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.30s;--acc:#B45309;--tint:#FFE9BF">
+  <a class="im" href="https://salmonfitness.com/product/cast-iron-kettlebell/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Cast-Iron-Kettlebell.jpg" alt="Cast Iron Kettlebell" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="cast-iron-kettlebell" data-name="Cast Iron Kettlebell" data-img="2023/10/Cast-Iron-Kettlebell.jpg">Add to quote</button>
   <div class="info"><span class="cl">Bars &amp; Plates</span><h3><a href="https://salmonfitness.com/product/cast-iron-kettlebell/">Cast Iron Kettlebell</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/cast-iron-kettlebell/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.35s;--acc:#7B4DFF;--tint:#E6DDFF">
-  <a class="im" href="https://salmonfitness.com/product/ghd/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/GHD.jpg" alt="GHD" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.35s;--acc:#7B4DFF;--tint:#E6DDFF">
+  <a class="im" href="https://salmonfitness.com/product/ghd/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/GHD.jpg" alt="GHD" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="ghd" data-name="GHD" data-img="2023/10/GHD.jpg">Add to quote</button>
   <div class="info"><span class="cl">Speciality</span><h3><a href="https://salmonfitness.com/product/ghd/">GHD</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/ghd/">Details</a></div></div>
 </article>
     </div>
     <div class="shelf" id="sh-racks" role="tabpanel">
-<article class="pc" style="--d:0.00s;--acc:#E0272D;--tint:#FFE1E2">
-  <a class="im" href="https://salmonfitness.com/product/ares-power-rack/" tabindex="-1" aria-hidden="true"><span class="badge">Bespoke colour</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Green_M16.jpg" alt="ARES Power Rack" loading="lazy" width="600" height="600"></a>
+<article class="pc hasSw" style="--d:0.00s;--acc:#E0272D;--tint:#FFE1E2">
+  <a class="im" href="https://salmonfitness.com/product/ares-power-rack/" tabindex="-1" aria-hidden="true"><span class="badge">Bespoke colour</span><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Green_M16.jpg" alt="ARES Power Rack" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="ares-power-rack" data-name="ARES Power Rack" data-img="2023/10/Power-Rack_Green_M16.jpg">Add to quote</button>
-  <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/ares-power-rack/">ARES Power Rack</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/ares-power-rack/">Details</a></div></div>
+  <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/ares-power-rack/">ARES Power Rack</a></h3><div class="sws" role="group" aria-label="Colour"><button class="sw2" type="button" aria-label="Green" aria-pressed="true" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Green_M16.jpg" style="--sc:#2E8B57"></button><button class="sw2" type="button" aria-label="Blue" aria-pressed="false" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Blue_M16.jpg" style="--sc:#2F6BFF"></button><button class="sw2" type="button" aria-label="Gold" aria-pressed="false" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Golden_M16.jpg" style="--sc:#C9A227"></button></div><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/ares-power-rack/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.05s;--acc:#E0272D;--tint:#FFE1E2">
-  <a class="im" href="https://salmonfitness.com/product/ares-power-rack-stainless/" tabindex="-1" aria-hidden="true"><span class="badge">Stainless</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Stainless_M16.jpg" alt="ARES Power Rack (Stainless)" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.05s;--acc:#E0272D;--tint:#FFE1E2">
+  <a class="im" href="https://salmonfitness.com/product/ares-power-rack-stainless/" tabindex="-1" aria-hidden="true"><span class="badge">Stainless</span><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Stainless_M16.jpg" alt="ARES Power Rack (Stainless)" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="ares-power-rack-stainless" data-name="ARES Power Rack (Stainless)" data-img="2023/10/Power-Rack_Stainless_M16.jpg">Add to quote</button>
   <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/ares-power-rack-stainless/">ARES Power Rack (Stainless)</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/ares-power-rack-stainless/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.10s;--acc:#E0272D;--tint:#FFE1E2">
-  <a class="im" href="https://salmonfitness.com/product/appollo-half-rack/" tabindex="-1" aria-hidden="true"><span class="badge">Bespoke colour</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Half-Rack_Orange_M16.jpg" alt="ARES Half Rack" loading="lazy" width="600" height="600"></a>
+<article class="pc hasSw" style="--d:0.10s;--acc:#E0272D;--tint:#FFE1E2">
+  <a class="im" href="https://salmonfitness.com/product/appollo-half-rack/" tabindex="-1" aria-hidden="true"><span class="badge">Bespoke colour</span><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Half-Rack_Orange_M16.jpg" alt="ARES Half Rack" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="appollo-half-rack" data-name="ARES Half Rack" data-img="2023/10/Half-Rack_Orange_M16.jpg">Add to quote</button>
-  <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/appollo-half-rack/">ARES Half Rack</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/appollo-half-rack/">Details</a></div></div>
+  <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/appollo-half-rack/">ARES Half Rack</a></h3><div class="sws" role="group" aria-label="Colour"><button class="sw2" type="button" aria-label="Orange" aria-pressed="true" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Half-Rack_Orange_M16.jpg" style="--sc:#F28C28"></button><button class="sw2" type="button" aria-label="Black" aria-pressed="false" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Half-Rack_Black_M16.jpg" style="--sc:#16181D"></button><button class="sw2" type="button" aria-label="Blue" aria-pressed="false" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Half-Rack_Blue_M16.jpg" style="--sc:#2F6BFF"></button></div><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/appollo-half-rack/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.15s;--acc:#E0272D;--tint:#FFE1E2">
-  <a class="im" href="https://salmonfitness.com/product/ares-half-rack-stainless/" tabindex="-1" aria-hidden="true"><span class="badge">Stainless</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Half-Rack_Stainless_M16.jpg" alt="ARES Half Rack (Stainless)" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.15s;--acc:#E0272D;--tint:#FFE1E2">
+  <a class="im" href="https://salmonfitness.com/product/ares-half-rack-stainless/" tabindex="-1" aria-hidden="true"><span class="badge">Stainless</span><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Half-Rack_Stainless_M16.jpg" alt="ARES Half Rack (Stainless)" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="ares-half-rack-stainless" data-name="ARES Half Rack (Stainless)" data-img="2023/10/Half-Rack_Stainless_M16.jpg">Add to quote</button>
   <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/ares-half-rack-stainless/">ARES Half Rack (Stainless)</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/ares-half-rack-stainless/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.20s;--acc:#E0272D;--tint:#FFE1E2">
-  <a class="im" href="https://salmonfitness.com/product/ares-single-rack/" tabindex="-1" aria-hidden="true"><span class="badge">Bespoke colour</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Single-Rack_Blue_M16.jpg.jpg" alt="ARES Single Rack" loading="lazy" width="600" height="600"></a>
+<article class="pc hasSw" style="--d:0.20s;--acc:#E0272D;--tint:#FFE1E2">
+  <a class="im" href="https://salmonfitness.com/product/ares-single-rack/" tabindex="-1" aria-hidden="true"><span class="badge">Bespoke colour</span><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Single-Rack_Blue_M16.jpg.jpg" alt="ARES Single Rack" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="ares-single-rack" data-name="ARES Single Rack" data-img="2023/10/Single-Rack_Blue_M16.jpg.jpg">Add to quote</button>
-  <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/ares-single-rack/">ARES Single Rack</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/ares-single-rack/">Details</a></div></div>
+  <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/ares-single-rack/">ARES Single Rack</a></h3><div class="sws" role="group" aria-label="Colour"><button class="sw2" type="button" aria-label="Blue" aria-pressed="true" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Single-Rack_Blue_M16.jpg.jpg" style="--sc:#2F6BFF"></button><button class="sw2" type="button" aria-label="Black" aria-pressed="false" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Single-Rack_Black_M16.jpg.jpg" style="--sc:#16181D"></button><button class="sw2" type="button" aria-label="Gold" aria-pressed="false" data-img="https://salmonfitness.com/wp-content/uploads/2023/10/Single-Rack_Golden_M16.jpg.jpg" style="--sc:#C9A227"></button></div><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/ares-single-rack/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.25s;--acc:#E0272D;--tint:#FFE1E2">
-  <a class="im" href="https://salmonfitness.com/product/ares-single-rack-stainless/" tabindex="-1" aria-hidden="true"><span class="badge">Stainless</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Single-Rack_Stainless_M16.jpg" alt="ARES Single Rack (Stainless)" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.25s;--acc:#E0272D;--tint:#FFE1E2">
+  <a class="im" href="https://salmonfitness.com/product/ares-single-rack-stainless/" tabindex="-1" aria-hidden="true"><span class="badge">Stainless</span><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Single-Rack_Stainless_M16.jpg" alt="ARES Single Rack (Stainless)" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="ares-single-rack-stainless" data-name="ARES Single Rack (Stainless)" data-img="2023/10/Single-Rack_Stainless_M16.jpg">Add to quote</button>
   <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/ares-single-rack-stainless/">ARES Single Rack (Stainless)</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/ares-single-rack-stainless/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.30s;--acc:#E0272D;--tint:#FFE1E2">
-  <a class="im" href="https://salmonfitness.com/product/free-standing-1-bay-rig/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2024/01/Free-standing-1_bay-rig.jpg" alt="Free standing 1-bay rig" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.30s;--acc:#E0272D;--tint:#FFE1E2">
+  <a class="im" href="https://salmonfitness.com/product/free-standing-1-bay-rig/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2024/01/Free-standing-1_bay-rig.jpg" alt="Free standing 1-bay rig" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="free-standing-1-bay-rig" data-name="Free standing 1-bay rig" data-img="2024/01/Free-standing-1_bay-rig.jpg">Add to quote</button>
   <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/free-standing-1-bay-rig/">Free standing 1-bay rig</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/free-standing-1-bay-rig/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.35s;--acc:#E0272D;--tint:#FFE1E2">
-  <a class="im" href="https://salmonfitness.com/product/free-standing-1-bay-rig-extension/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2024/01/Free-standing-1_bay-rig-extension.jpg" alt="1-bay rig extension" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.35s;--acc:#E0272D;--tint:#FFE1E2">
+  <a class="im" href="https://salmonfitness.com/product/free-standing-1-bay-rig-extension/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2024/01/Free-standing-1_bay-rig-extension.jpg" alt="1-bay rig extension" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="free-standing-1-bay-rig-extension" data-name="1-bay rig extension" data-img="2024/01/Free-standing-1_bay-rig-extension.jpg">Add to quote</button>
   <div class="info"><span class="cl">Racks &amp; Rigs</span><h3><a href="https://salmonfitness.com/product/free-standing-1-bay-rig-extension/">1-bay rig extension</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/free-standing-1-bay-rig-extension/">Details</a></div></div>
 </article>
     </div>
     <div class="shelf" id="sh-bars" role="tabpanel">
-<article class="pc" style="--d:0.00s;--acc:#B45309;--tint:#FFE9BF">
-  <a class="im" href="https://salmonfitness.com/product/20kg-mens-cross-training-bar/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/20kg-Mens-Cross-Training-Bar.jpg" alt="20kg Men&#x27;s Cross Training Bar" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.00s;--acc:#B45309;--tint:#FFE9BF">
+  <a class="im" href="https://salmonfitness.com/product/20kg-mens-cross-training-bar/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/20kg-Mens-Cross-Training-Bar.jpg" alt="20kg Men&#x27;s Cross Training Bar" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="20kg-mens-cross-training-bar" data-name="20kg Men&#x27;s Cross Training Bar" data-img="2023/10/20kg-Mens-Cross-Training-Bar.jpg">Add to quote</button>
   <div class="info"><span class="cl">Bars &amp; Plates</span><h3><a href="https://salmonfitness.com/product/20kg-mens-cross-training-bar/">20kg Men&#x27;s Cross Training Bar</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/20kg-mens-cross-training-bar/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.05s;--acc:#B45309;--tint:#FFE9BF">
-  <a class="im" href="https://salmonfitness.com/product/6-hole-urethane-grip-plate/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/09/6-Hole-Urethane-Grip-Plate.jpg" alt="6-Hole Urethane Grip Plate" loading="lazy" width="600" height="600"></a>
+<article class="pc has2" style="--d:0.05s;--acc:#B45309;--tint:#FFE9BF">
+  <a class="im" href="https://salmonfitness.com/product/6-hole-urethane-grip-plate/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/09/6-Hole-Urethane-Grip-Plate.jpg" alt="6-Hole Urethane Grip Plate" loading="lazy" width="600" height="600"><img class="i2" src="https://salmonfitness.com/wp-content/uploads/2023/09/CBW730_6-Hole-Urethane-Grip-Plate.jpg" alt="6-Hole Urethane Grip Plate alternate view" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="6-hole-urethane-grip-plate" data-name="6-Hole Urethane Grip Plate" data-img="2023/09/6-Hole-Urethane-Grip-Plate.jpg">Add to quote</button>
   <div class="info"><span class="cl">Bars &amp; Plates</span><h3><a href="https://salmonfitness.com/product/6-hole-urethane-grip-plate/">6-Hole Urethane Grip Plate</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/6-hole-urethane-grip-plate/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.10s;--acc:#B45309;--tint:#FFE9BF">
-  <a class="im" href="https://salmonfitness.com/product/12-sided-urethane-grip-plate/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/09/12-sided-Urethane-Grip-Plate.jpg" alt="12-sided Urethane Grip Plate" loading="lazy" width="600" height="600"></a>
+<article class="pc has2" style="--d:0.10s;--acc:#B45309;--tint:#FFE9BF">
+  <a class="im" href="https://salmonfitness.com/product/12-sided-urethane-grip-plate/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/09/12-sided-Urethane-Grip-Plate.jpg" alt="12-sided Urethane Grip Plate" loading="lazy" width="600" height="600"><img class="i2" src="https://salmonfitness.com/wp-content/uploads/2023/09/CBW731_12-sided-Urethane-Grip-Plate.jpg" alt="12-sided Urethane Grip Plate alternate view" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="12-sided-urethane-grip-plate" data-name="12-sided Urethane Grip Plate" data-img="2023/09/12-sided-Urethane-Grip-Plate.jpg">Add to quote</button>
   <div class="info"><span class="cl">Bars &amp; Plates</span><h3><a href="https://salmonfitness.com/product/12-sided-urethane-grip-plate/">12-sided Urethane Grip Plate</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/12-sided-urethane-grip-plate/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.15s;--acc:#B45309;--tint:#FFE9BF">
-  <a class="im" href="https://salmonfitness.com/product/calibrated-steel-plate/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/09/Calibrated-Steel-Plate.jpg" alt="Calibrated Steel Plate" loading="lazy" width="600" height="600"></a>
+<article class="pc has2" style="--d:0.15s;--acc:#B45309;--tint:#FFE9BF">
+  <a class="im" href="https://salmonfitness.com/product/calibrated-steel-plate/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/09/Calibrated-Steel-Plate.jpg" alt="Calibrated Steel Plate" loading="lazy" width="600" height="600"><img class="i2" src="https://salmonfitness.com/wp-content/uploads/2023/09/CBW735_Calibrated-Steel-Plate.jpg" alt="Calibrated Steel Plate alternate view" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="calibrated-steel-plate" data-name="Calibrated Steel Plate" data-img="2023/09/Calibrated-Steel-Plate.jpg">Add to quote</button>
   <div class="info"><span class="cl">Bars &amp; Plates</span><h3><a href="https://salmonfitness.com/product/calibrated-steel-plate/">Calibrated Steel Plate</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/calibrated-steel-plate/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.20s;--acc:#B45309;--tint:#FFE9BF">
-  <a class="im" href="https://salmonfitness.com/product/change-plate/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/09/Change-Plate.jpg" alt="Change Plate" loading="lazy" width="600" height="600"></a>
+<article class="pc has2" style="--d:0.20s;--acc:#B45309;--tint:#FFE9BF">
+  <a class="im" href="https://salmonfitness.com/product/change-plate/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/09/Change-Plate.jpg" alt="Change Plate" loading="lazy" width="600" height="600"><img class="i2" src="https://salmonfitness.com/wp-content/uploads/2023/09/CBW732_Change-Plate.jpg" alt="Change Plate alternate view" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="change-plate" data-name="Change Plate" data-img="2023/09/Change-Plate.jpg">Add to quote</button>
   <div class="info"><span class="cl">Bars &amp; Plates</span><h3><a href="https://salmonfitness.com/product/change-plate/">Change Plate</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/change-plate/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.25s;--acc:#B45309;--tint:#FFE9BF">
-  <a class="im" href="https://salmonfitness.com/product/barbell-lifter/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Barbell-Lifter.jpg" alt="Barbell Lifter" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.25s;--acc:#B45309;--tint:#FFE9BF">
+  <a class="im" href="https://salmonfitness.com/product/barbell-lifter/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Barbell-Lifter.jpg" alt="Barbell Lifter" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="barbell-lifter" data-name="Barbell Lifter" data-img="2023/10/Barbell-Lifter.jpg">Add to quote</button>
   <div class="info"><span class="cl">Bars &amp; Plates</span><h3><a href="https://salmonfitness.com/product/barbell-lifter/">Barbell Lifter</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/barbell-lifter/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.30s;--acc:#B45309;--tint:#FFE9BF">
-  <a class="im" href="https://salmonfitness.com/product/cast-iron-kettlebell/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Cast-Iron-Kettlebell.jpg" alt="Cast Iron Kettlebell" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.30s;--acc:#B45309;--tint:#FFE9BF">
+  <a class="im" href="https://salmonfitness.com/product/cast-iron-kettlebell/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Cast-Iron-Kettlebell.jpg" alt="Cast Iron Kettlebell" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="cast-iron-kettlebell" data-name="Cast Iron Kettlebell" data-img="2023/10/Cast-Iron-Kettlebell.jpg">Add to quote</button>
   <div class="info"><span class="cl">Bars &amp; Plates</span><h3><a href="https://salmonfitness.com/product/cast-iron-kettlebell/">Cast Iron Kettlebell</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/cast-iron-kettlebell/">Details</a></div></div>
 </article>
 <a class="viewall" href="https://salmonfitness.com/product-category/bars-plates/"><span class="eyebrow" style="color:#fff">44 products in the range</span><h3>See all Bars &amp; Plates</h3><p>Browse the full category on the catalogue.</p></a>
     </div>
     <div class="shelf" id="sh-spec" role="tabpanel">
-<article class="pc" style="--d:0.00s;--acc:#7B4DFF;--tint:#E6DDFF">
-  <a class="im" href="https://salmonfitness.com/product/ghd/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/GHD.jpg" alt="GHD" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.00s;--acc:#7B4DFF;--tint:#E6DDFF">
+  <a class="im" href="https://salmonfitness.com/product/ghd/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/GHD.jpg" alt="GHD" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="ghd" data-name="GHD" data-img="2023/10/GHD.jpg">Add to quote</button>
   <div class="info"><span class="cl">Speciality</span><h3><a href="https://salmonfitness.com/product/ghd/">GHD</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/ghd/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.05s;--acc:#7B4DFF;--tint:#E6DDFF">
-  <a class="im" href="https://salmonfitness.com/product/reverse-hyper/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Reverse-Hyper.jpg" alt="Reverse Hyper" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.05s;--acc:#7B4DFF;--tint:#E6DDFF">
+  <a class="im" href="https://salmonfitness.com/product/reverse-hyper/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Reverse-Hyper.jpg" alt="Reverse Hyper" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="reverse-hyper" data-name="Reverse Hyper" data-img="2023/10/Reverse-Hyper.jpg">Add to quote</button>
   <div class="info"><span class="cl">Speciality</span><h3><a href="https://salmonfitness.com/product/reverse-hyper/">Reverse Hyper</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/reverse-hyper/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.10s;--acc:#7B4DFF;--tint:#E6DDFF">
-  <a class="im" href="https://salmonfitness.com/product/dip-stand/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/11/DipStand1.jpg" alt="Dip Stand" loading="lazy" width="600" height="600"></a>
+<article class="pc has2" style="--d:0.10s;--acc:#7B4DFF;--tint:#E6DDFF">
+  <a class="im" href="https://salmonfitness.com/product/dip-stand/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/11/DipStand1.jpg" alt="Dip Stand" loading="lazy" width="600" height="600"><img class="i2" src="https://salmonfitness.com/wp-content/uploads/2023/11/DipStand3.jpg" alt="Dip Stand alternate view" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="dip-stand" data-name="Dip Stand" data-img="2023/11/DipStand1.jpg">Add to quote</button>
   <div class="info"><span class="cl">Speciality</span><h3><a href="https://salmonfitness.com/product/dip-stand/">Dip Stand</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/dip-stand/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.15s;--acc:#7B4DFF;--tint:#E6DDFF">
-  <a class="im" href="https://salmonfitness.com/product/sissy-squat/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/11/SissySquat.jpg" alt="Sissy Squat" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.15s;--acc:#7B4DFF;--tint:#E6DDFF">
+  <a class="im" href="https://salmonfitness.com/product/sissy-squat/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/11/SissySquat.jpg" alt="Sissy Squat" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="sissy-squat" data-name="Sissy Squat" data-img="2023/11/SissySquat.jpg">Add to quote</button>
   <div class="info"><span class="cl">Speciality</span><h3><a href="https://salmonfitness.com/product/sissy-squat/">Sissy Squat</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/sissy-squat/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.20s;--acc:#0E9F92;--tint:#D1F4EE">
-  <a class="im" href="https://salmonfitness.com/product/gymnastics-ring/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Gymnastics-Ring.jpg" alt="Gymnastics Ring" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.20s;--acc:#0E9F92;--tint:#D1F4EE">
+  <a class="im" href="https://salmonfitness.com/product/gymnastics-ring/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Gymnastics-Ring.jpg" alt="Gymnastics Ring" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="gymnastics-ring" data-name="Gymnastics Ring" data-img="2023/10/Gymnastics-Ring.jpg">Add to quote</button>
   <div class="info"><span class="cl">Conditioning</span><h3><a href="https://salmonfitness.com/product/gymnastics-ring/">Gymnastics Ring</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/gymnastics-ring/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.25s;--acc:#0E9F92;--tint:#D1F4EE">
-  <a class="im" href="https://salmonfitness.com/product/mini-power-bands/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Mini-Power-Bands.jpg" alt="Mini Power Bands" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.25s;--acc:#0E9F92;--tint:#D1F4EE">
+  <a class="im" href="https://salmonfitness.com/product/mini-power-bands/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Mini-Power-Bands.jpg" alt="Mini Power Bands" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="mini-power-bands" data-name="Mini Power Bands" data-img="2023/10/Mini-Power-Bands.jpg">Add to quote</button>
   <div class="info"><span class="cl">Conditioning</span><h3><a href="https://salmonfitness.com/product/mini-power-bands/">Mini Power Bands</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/mini-power-bands/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.30s;--acc:#0E9F92;--tint:#D1F4EE">
-  <a class="im" href="https://salmonfitness.com/product/resistance-tube-with-sleeve/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Resistance-tube-with-Sleeve.jpg" alt="Resistance Tube with Sleeve" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.30s;--acc:#0E9F92;--tint:#D1F4EE">
+  <a class="im" href="https://salmonfitness.com/product/resistance-tube-with-sleeve/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Resistance-tube-with-Sleeve.jpg" alt="Resistance Tube with Sleeve" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="resistance-tube-with-sleeve" data-name="Resistance Tube with Sleeve" data-img="2023/10/Resistance-tube-with-Sleeve.jpg">Add to quote</button>
   <div class="info"><span class="cl">Conditioning</span><h3><a href="https://salmonfitness.com/product/resistance-tube-with-sleeve/">Resistance Tube with Sleeve</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/resistance-tube-with-sleeve/">Details</a></div></div>
 </article>
-<article class="pc" style="--d:0.35s;--acc:#0E9F92;--tint:#D1F4EE">
-  <a class="im" href="https://salmonfitness.com/product/wall-ball/" tabindex="-1" aria-hidden="true"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Wall-Ball.jpg" alt="Wall Ball" loading="lazy" width="600" height="600"></a>
+<article class="pc zoom" style="--d:0.35s;--acc:#0E9F92;--tint:#D1F4EE">
+  <a class="im" href="https://salmonfitness.com/product/wall-ball/" tabindex="-1" aria-hidden="true"><img class="i1" src="https://salmonfitness.com/wp-content/uploads/2023/10/Wall-Ball.jpg" alt="Wall Ball" loading="lazy" width="600" height="600"></a>
   <button class="add" type="button" data-add="wall-ball" data-name="Wall Ball" data-img="2023/10/Wall-Ball.jpg">Add to quote</button>
   <div class="info"><span class="cl">Conditioning</span><h3><a href="https://salmonfitness.com/product/wall-ball/">Wall Ball</a></h3><div class="pr"><span>Price on request</span><a href="https://salmonfitness.com/product/wall-ball/">Details</a></div></div>
 </article>
@@ -846,7 +845,7 @@ footer.site ul a:hover{padding-left:6px}
 <!-- SPOTLIGHT -->
 <section class="sec spot">
   <div class="wrap">
-    <div class="phwrap"><div class="ph clip"><img src="assets/img/deadlift-platform.jpg" alt="Salmon deadlift platform in a gym" loading="lazy" width="1600" height="1200"></div><div class="phsm rv" style="--d:.4s"><img src="https://salmonfitness.com/wp-content/uploads/2023/11/Deadlift-platform.jpg" alt="Deadlift platform product shot" loading="lazy" width="600" height="600"><span>Product shot</span></div></div>
+    <div class="phwrap"><div class="ph clip"><img src="assets/img/deadlift-platform-gym.jpg" alt="Deadlift platform in a commercial gym" loading="lazy" width="1536" height="1024"></div><div class="phsm rv" style="--d:.4s"><img src="https://salmonfitness.com/wp-content/uploads/2023/11/Deadlift-platform.jpg" alt="Deadlift platform product shot" loading="lazy" width="600" height="600"><span>Product shot</span></div></div>
     <div class="rv-r">
       <span class="eyebrow">Product spotlight</span>
       <h2>Deadlift platform</h2>
@@ -1105,21 +1104,18 @@ footer.site ul a:hover{padding-left:6px}
     $$('[data-count]').forEach(function(el){co.observe(el)});
   }
 
-  // category accordion
-  var pns=$$('.pn');
-  function setOn(p){pns.forEach(function(x){x.classList.toggle('on',x===p)});}
-  pns.forEach(function(p){
-    p.addEventListener('mouseenter',function(){if(matchMedia('(hover:hover) and (min-width:901px)').matches)setOn(p)});
-    p.addEventListener('focus',function(){setOn(p)});
-    p.addEventListener('click',function(e){if(!p.classList.contains('on')){e.preventDefault();setOn(p);}});
-  });
-
   // tabs
   var tabs=$$('.tab'),shelves=$$('.shelf');
   tabs.forEach(function(t){t.addEventListener('click',function(){
     tabs.forEach(function(x){x.setAttribute('aria-selected',x===t)});
     shelves.forEach(function(s){s.classList.toggle('on',s.id===t.getAttribute('aria-controls'))});
   });});
+
+  // colour swatches on product cards
+  $$('.sw2').forEach(function(s){
+    function pick(){var c=s.closest('.pc'),im=$('.i1',c);$$('.sw2',c).forEach(function(x){x.setAttribute('aria-pressed',x===s)});im.style.opacity=0;setTimeout(function(){im.src=s.dataset.img;im.style.opacity=1;},180);}
+    s.addEventListener('mouseenter',pick);s.addEventListener('click',pick);
+  });
 
   // card glow
   $$('.pc,.tr').forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});});
