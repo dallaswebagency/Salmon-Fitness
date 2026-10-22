@@ -167,6 +167,9 @@ header.nav.stuck .brandmark{width:150px;height:75px}
 .tr h3{font-size:26px;font-weight:800;line-height:1}
 .tr p{color:var(--muted);font-size:14.5px;margin-top:8px;line-height:1.4}
 @media (max-width:1040px){.trgrid{grid-template-columns:repeat(2,1fr)}.tr:nth-child(4n){border-right:1px solid #E1E4EA}.tr:nth-child(2n){border-right:0}.tr:nth-last-child(-n+4){border-bottom:1px solid #E1E4EA}.tr:nth-last-child(-n+2){border-bottom:0}}
+
+.tr h3,.pc h3{overflow-wrap:anywhere;hyphens:auto}
+@media (max-width:380px){.tr h3{font-size:19px}.pc h3{font-size:18px}}
 @media (max-width:480px){.tr{padding:20px 16px}.tr h3{font-size:22px}.tr .ic{width:48px;height:48px}}
 
 /* categories simple grid */
@@ -574,6 +577,20 @@ footer.site ul a:hover{padding-left:6px}
   .hero-video{display:none}
   .js .rv,.js .rv-l,.js .rv-r,.js .clip{opacity:1;transform:none;clip-path:none}
 }
+@media (max-width:1040px){
+  .strip a{display:inline-flex;align-items:center;min-height:36px;border-bottom:0;text-decoration:underline;text-underline-offset:3px}
+  .strip .wrap{padding-block:4px}
+  .cc .ql a{padding:8px 13px}
+  .cc .ql{gap:8px}
+  .expert a,.askcard a,.fc{min-height:40px}
+}
+.pc .pr a.arr{flex:none;min-width:38px}
+.sw2{position:relative}
+.sw2::after{content:"";position:absolute;inset:-8px}
+@media (hover:none){.sw2{width:26px;height:26px}.hasSw .swatches,.pc .swatches{gap:8px}}
+@media (max-width:1040px){footer.site ul{gap:2px}footer.site ul a{display:inline-flex;align-items:center;min-height:36px}}
+.drawer .x{min-width:44px;min-height:44px}
+@media (max-width:1040px){footer.site ul a{min-width:44px}}
 </style>
 </head>
 <body>
