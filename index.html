@@ -124,19 +124,45 @@ header.nav.stuck .brandmark{width:150px;height:75px}
 .trust span{font-family:var(--font-d);text-transform:uppercase;font-weight:700;font-size:20px;letter-spacing:.04em;color:#3B475C;display:inline-flex;align-items:center;gap:48px}
 .trust span::after{content:"";width:8px;height:8px;background:var(--red);transform:rotate(45deg)}
 
-/* categories */
-.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
-.cat{position:relative;display:block;text-decoration:none;background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid #E1E4EA;transition:transform .4s var(--ease),box-shadow .4s}
-.cat:hover{transform:translateY(-6px);box-shadow:0 22px 40px rgba(10,15,24,.14)}
-.cat .im{aspect-ratio:1;background:#fff;overflow:hidden}
-.cat img{width:100%;height:100%;object-fit:contain;padding:14px;transition:transform .6s var(--ease)}
-.cat:hover img{transform:scale(1.08)}
-.cat .cp{min-width:0;padding:14px 16px 16px;border-top:1px solid #EEF0F3;display:flex;justify-content:space-between;align-items:center;gap:8px}
-.cat h3{font-size:22px;font-weight:700;overflow-wrap:anywhere}
-.cat small{display:block;color:var(--muted);font-size:13px;line-height:1.3;margin-top:3px}
-.cat .go{width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none;transition:background .25s,transform .25s}
-.cat:hover .go{background:var(--red);transform:rotate(-45deg)}
-.cat .go svg{width:14px;height:14px}
+/* categories bento */
+.bento-sec{position:relative;overflow:hidden}
+.bento-sec::before{content:"";position:absolute;width:720px;height:720px;right:-240px;top:-240px;border-radius:50%;background:radial-gradient(circle,rgba(224,39,45,.22),transparent 65%);pointer-events:none}
+.bento{position:relative;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(250px,auto);gap:16px}
+.bt{position:relative;display:flex;flex-direction:column;gap:14px;padding:14px 14px 20px;border-radius:18px;background:linear-gradient(150deg,#1D2B45,#131D30);border:1px solid var(--line);color:#fff;text-decoration:none;overflow:hidden;transition:transform .5s var(--ease),border-color .3s,box-shadow .5s}
+.bt:hover{transform:translateY(-8px);border-color:var(--red);box-shadow:0 30px 60px rgba(0,0,0,.45),0 0 0 1px var(--red)}
+.bt .pic{position:relative;flex:1;min-height:150px;border-radius:12px;background:#fff;overflow:hidden}
+.bt .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:14px;transition:transform .8s var(--ease)}
+.bt:hover .pic img{transform:scale(1.1) rotate(-1.5deg)}
+.bt .num{position:absolute;left:12px;top:10px;z-index:2;font:800 54px/1 var(--font-d);color:transparent;-webkit-text-stroke:1.5px #C9CFD9;opacity:.9;transition:all .3s}
+.bt:hover .num{-webkit-text-stroke-color:var(--red)}
+.bt .chip{position:absolute;right:12px;top:12px;z-index:2;background:var(--red);color:#fff;font:500 11px var(--font-m);letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.bt .meta{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:0 6px}
+.bt h3{font-size:clamp(28px,2.6vw,36px);font-weight:800;position:relative;padding-bottom:8px}
+.bt h3::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:34px;background:var(--red);transition:width .5s var(--ease)}
+.bt:hover h3::after{width:100%}
+.bt small{display:block;color:#9AA6BA;font-size:14px;line-height:1.35;margin-top:6px}
+.bt .go{flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid #4A5873;display:grid;place-items:center;transition:all .35s var(--ease)}
+.bt:hover .go{background:var(--red);border-color:var(--red);transform:rotate(-45deg)}
+.bt .go svg{width:16px;height:16px}
+.bt.big{grid-column:span 2;grid-row:span 2;background:#0A0F18}
+.bt.big::before{content:"";position:absolute;inset:0;background:url(assets/img/gym-rack-blue.jpg) center/cover;opacity:.55;transition:transform 1.2s var(--ease),opacity .4s}
+.bt.big:hover::before{transform:scale(1.06);opacity:.7}
+.bt.big::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,24,.15),rgba(10,15,24,.92) 80%)}
+.bt.big>*{position:relative;z-index:2}
+.bt.big .pic{margin:6px;box-shadow:0 24px 50px rgba(0,0,0,.45)}
+.bt.big .num{-webkit-text-stroke-color:#fff}
+.bt.big h3{font-size:clamp(44px,5vw,72px)}
+.bt.wide{grid-column:span 2;flex-direction:row;align-items:stretch;grid-auto-rows:auto}
+.bt.wide .pic{flex:0 0 42%;min-height:0}
+.bt.wide .meta{flex:1;flex-direction:column;align-items:flex-start;justify-content:center;gap:16px}
+.bt.cta{grid-column:span 2;background:var(--red);border-color:var(--red);justify-content:center;padding:34px}
+.bt.cta h3{font-size:clamp(34px,4vw,52px)}
+.bt.cta h3::after{background:#fff}
+.bt.cta small{color:#FFE3E4;font-size:16px;max-width:36ch}
+.bt.cta .go{border-color:#fff}.bt.cta:hover .go{background:#fff;color:var(--red)}
+.bt.cta:hover{border-color:#fff;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+@media (max-width:1040px){.bento{grid-template-columns:repeat(2,1fr)}.bt.big{grid-row:span 1;min-height:460px}}
+@media (max-width:760px){.bento{grid-template-columns:1fr}.bt.big,.bt.wide,.bt.cta{grid-column:auto}.bt.wide{flex-direction:column}.bt.wide .pic{flex:1;min-height:170px}.bt .num{font-size:44px}}
 
 /* shop shelf */
 .shop{background:var(--white)}
@@ -463,19 +489,21 @@ footer.site .legal{margin-top:48px;padding-top:22px;border-top:1px solid var(--l
 <div class="trust"><div class="track"><span>EN 957-1</span><span>ASTM F2276-10</span><span>TÜV tested</span><span>Intertek tested</span><span>Bespoke colour</span><span>OEM &amp; private label</span><span>Made in Qingdao</span><span>20+ years engineering</span></div></div>
 
 <!-- CATEGORIES -->
-<section class="sec" id="products">
+<section class="sec dark bento-sec" id="products">
   <div class="wrap">
     <div class="sec-head rv">
-      <div><span class="eyebrow">Shop by category</span><h2>Six families, one factory</h2></div>
-      <p>Everything for gyms, studios and training facilities. Colour, branding and specification can change to suit your market.</p>
+      <div><span class="eyebrow">Shop by category</span><h2>Find your <span style="color:var(--red)">equipment</span></h2></div>
+      <p>Six families built in one factory. Pick a category to see the full range, or ask us for something bespoke.</p>
     </div>
-    <div class="cats">
-      <a class="cat rv" style="--d:0.00s" href="https://salmonfitness.com/product-category/racks/"><div class="im"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Stainless_M24.jpg" alt="Racks &amp; Rigs" loading="lazy" width="300" height="300"></div><div class="cp"><div><h3>Racks &amp; Rigs</h3><small>29 models, from single racks to rigs</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="cat rv" style="--d:0.07s" href="https://salmonfitness.com/product-category/benches/"><div class="im"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Commercial-FID-Bench.jpg" alt="Benches" loading="lazy" width="300" height="300"></div><div class="cp"><div><h3>Benches</h3><small>FID, flat, hip thruster, hyper</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="cat rv" style="--d:0.14s" href="https://salmonfitness.com/product-category/bars-plates/"><div class="im"><img src="https://salmonfitness.com/wp-content/uploads/2023/09/Calibrated-Steel-Plate.jpg" alt="Bars &amp; Plates" loading="lazy" width="300" height="300"></div><div class="cp"><div><h3>Bars &amp; Plates</h3><small>44 bars, plates and weights</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="cat rv" style="--d:0.21s" href="https://salmonfitness.com/product-category/storage-solutions/"><div class="im"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/2-Tier-dumbbell-rack-10-pair.jpg" alt="Storage" loading="lazy" width="300" height="300"></div><div class="cp"><div><h3>Storage</h3><small>Dumbbell racks, plate trees</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="cat rv" style="--d:0.28s" href="https://salmonfitness.com/product-category/speciality/"><div class="im"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/GHD.jpg" alt="Speciality" loading="lazy" width="300" height="300"></div><div class="cp"><div><h3>Speciality</h3><small>GHD, reverse hyper, dip stand</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
-      <a class="cat rv" style="--d:0.35s" href="https://salmonfitness.com/product-category/conditioning/"><div class="im"><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Gymnastics-Ring.jpg" alt="Conditioning" loading="lazy" width="300" height="300"></div><div class="cp"><div><h3>Conditioning</h3><small>Rings, bands and tubes</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+    <div class="bento">
+      <a class="bt big rv" style="--d:0.00s" href="https://salmonfitness.com/product-category/racks/"><div class="pic"><span class="num">01</span><span class="chip">29 models</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Power-Rack_Green_M24.jpg" alt="Racks &amp; Rigs" loading="lazy" width="600" height="600"></div><div class="meta"><div><h3>Racks &amp; Rigs</h3><small>Power racks, half racks, single racks and free standing rigs</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="bt  rv" style="--d:0.08s" href="https://salmonfitness.com/product-category/benches/"><div class="pic"><span class="num">02</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Commercial-FID-Bench.jpg" alt="Benches" loading="lazy" width="600" height="600"></div><div class="meta"><div><h3>Benches</h3><small>FID, flat, hip thruster and hyper extension</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="bt  rv" style="--d:0.16s" href="https://salmonfitness.com/product-category/bars-plates/"><div class="pic"><span class="num">03</span><span class="chip">44 products</span><img src="https://salmonfitness.com/wp-content/uploads/2023/09/Calibrated-Steel-Plate.jpg" alt="Bars &amp; Plates" loading="lazy" width="600" height="600"></div><div class="meta"><div><h3>Bars &amp; Plates</h3><small>Cross training bars, plates, kettlebells</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="bt  rv" style="--d:0.24s" href="https://salmonfitness.com/product-category/storage-solutions/"><div class="pic"><span class="num">04</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/2-Tier-dumbbell-rack-10-pair.jpg" alt="Storage" loading="lazy" width="600" height="600"></div><div class="meta"><div><h3>Storage</h3><small>Dumbbell racks, plate trees, barbell racks</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="bt  rv" style="--d:0.32s" href="https://salmonfitness.com/product-category/speciality/"><div class="pic"><span class="num">05</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/GHD.jpg" alt="Speciality" loading="lazy" width="600" height="600"></div><div class="meta"><div><h3>Speciality</h3><small>GHD, reverse hyper, dip stand</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="bt wide rv" style="--d:0.40s" href="https://salmonfitness.com/product-category/conditioning/"><div class="pic"><span class="num">06</span><img src="https://salmonfitness.com/wp-content/uploads/2023/10/Gymnastics-Ring.jpg" alt="Conditioning" loading="lazy" width="600" height="600"></div><div class="meta"><div><h3>Conditioning</h3><small>Rings, resistance bands and tubes, wall balls</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+      <a class="bt cta rv" style="--d:.5s" href="#meet"><div class="meta"><div><span class="eyebrow" style="color:#fff">Bespoke &amp; OEM</span><h3 style="margin-top:10px">Need something made for you?</h3><small>Your design or ours, your colour and your name. Tell us the brief.</small></div><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></span></div></a>
+
     </div>
   </div>
 </section>
