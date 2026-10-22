@@ -103,11 +103,17 @@ header.nav.stuck .brandmark{width:150px;height:75px}
 .hero .when{font-family:var(--font-m);letter-spacing:.1em;text-transform:uppercase;font-size:14px;margin-top:20px;color:#D5DCE8}
 .hero .lead{max-width:54ch;margin-top:18px;color:#C3CCDB;font-size:19px}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
-.facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:center;text-align:center;gap:0;margin:40px 0 0}
-.facts div{padding-right:28px}.facts div+div{padding-left:28px;border-left:1px solid rgba(255,255,255,.2)}
-.facts dt{font-family:var(--font-m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-d)}
-.facts dd{margin:4px 0 0;font-weight:600}
-.tbc{border:1px dashed #8793AA;padding:1px 8px;border-radius:4px;color:#B3BDCF;font-weight:400;font-size:13px}
+.facts{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin:44px 0 0;width:min(1240px,calc(100vw - 40px))}
+.fact dd{white-space:nowrap}
+@media (max-width:760px){.fact{flex:1 1 100%}.fact dd{white-space:normal}}
+.fact{display:flex;align-items:center;gap:14px;text-align:left;padding:14px 18px 14px 14px;border-radius:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(14px);box-shadow:0 14px 34px rgba(0,0,0,.35);transition:transform .35s var(--ease),background .3s,border-color .3s}
+.fact:hover{transform:translateY(-4px);background:rgba(255,255,255,.16);border-color:var(--red)}
+.fact:nth-child(1) .fi{background:var(--red)}.fact:nth-child(2) .fi{background:var(--c-amber);background:#F59E0B}.fact:nth-child(3) .fi{background:var(--c-violet)}
+.fi{flex:none;width:50px;height:50px;border-radius:14px;display:grid;place-items:center;color:#fff}
+.fi svg{width:26px;height:26px}
+.facts dt{font-family:var(--font-m);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#FFB4B7;font-weight:500}
+.facts dd{margin:4px 0 0;font:800 clamp(19px,1.85vw,25px)/1.05 var(--font-d);text-transform:uppercase;letter-spacing:.01em;color:#fff}
+.tbc{border:1.5px dashed #C9B8FF;padding:2px 10px;border-radius:6px;color:#E6DDFF;font:500 14px var(--font-b);text-transform:none;letter-spacing:0}
 .stage{display:grid;grid-template-columns:1fr 1fr;gap:14px;perspective:1000px}
 .stage figure{margin:0;background:#fff;border-radius:var(--r);overflow:hidden;position:relative;box-shadow:0 24px 50px rgba(0,0,0,.45);animation:float 7s ease-in-out infinite}
 .stage figure:first-child{grid-column:1/-1;aspect-ratio:16/10}
@@ -513,9 +519,9 @@ footer.site ul a:hover{padding-left:6px}
         <a class="btn btn-line" href="#meet">Arrange a meeting</a>
       </div>
       <dl class="facts rv" style="--d:.5s">
-        <div><dt>Show</dt><dd>FIBO Global Fitness, Koelnmesse</dd></div>
-        <div><dt>Dates</dt><dd>8 to 11 April 2027</dd></div>
-        <div><dt>Hall and stand</dt><dd><span class="tbc">to be added</span></dd></div>
+        <div class="fact"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><dt>Show</dt><dd>FIBO Global Fitness, Koelnmesse</dd></div></div>
+        <div class="fact"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><div><dt>Dates</dt><dd>8 to 11 April 2027</dd></div></div>
+        <div class="fact"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V9l9-5 9 5v12M9 21v-6h6v6"/></svg></span><div><dt>Hall and stand</dt><dd><span class="tbc">to be added</span></dd></div></div>
       </dl>
     </div>
   </div>
